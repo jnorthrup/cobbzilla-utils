@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.MethodUtils;
 import org.apache.commons.collections.Transformer;
 import org.apache.commons.lang3.ArrayUtils;
-import org.cobbzilla.util.collection.ArrayUtil;
 
 import java.io.Closeable;
 import java.lang.annotation.Annotation;
@@ -760,9 +759,9 @@ public class ReflectionUtil {
             }
             if (found == null) die("invoke_set: no method " + methodName + " found on target: " + target);
             try {
-                found.invoke(target, ArrayUtil.SINGLE_NULL_OBJECT);
+                found.invoke(target, new Object[] { getNullArgument(found.getParameterTypes()[0]) });
             } catch (Exception e) {
-                die("Error calling " + methodName + ": " + e);
+                die("Error calling " + methodName + " on target: " + target + " - " + e);
             }
         } else {
             try {
