@@ -556,7 +556,7 @@ public class HandlebarsUtil extends AbstractTemplateLoader {
             try {
                 return DateTimeZone.forID(timeZoneName);
             } catch (Exception e) {
-                return die("date_short: invalid timezone: "+timeZoneName);
+                return die("getTimeZone: invalid timezone: "+timeZoneName);
             }
         }
 
@@ -645,7 +645,7 @@ public class HandlebarsUtil extends AbstractTemplateLoader {
             return ((Number) src).longValue();
         } catch (Exception e) {
             // try to parse it in different formats
-            Object t = TimeUtil.parse(src.toString());
+            final Object t = TimeUtil.parse(src.toString());
             return longVal(t, timeZone, false);
         }
     }
