@@ -641,11 +641,11 @@ public class HandlebarsUtil extends AbstractTemplateLoader {
             return result.getMillis();
         }
 
-        if (!tryAgain) return die("longVal: unparseable long: "+src);
-
         try {
             return ((Number) src).longValue();
         } catch (Exception e) {
+            if (!tryAgain) return die("longVal: unparseable long: "+src+": "+e.getClass().getSimpleName()+": "+e.getMessage());
+
             // try to parse it in different formats
             final Object t = TimeUtil.parse(src.toString());
             return longVal(t, timeZone, false);
