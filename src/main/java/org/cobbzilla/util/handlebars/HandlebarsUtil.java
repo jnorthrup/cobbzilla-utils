@@ -322,7 +322,9 @@ public class HandlebarsUtil extends AbstractTemplateLoader {
                 final Object item = iter.next();
                 try {
                     final Object val = ReflectionUtil.get(item, path);
-                    if (val != null && val.equals(arg)) return new Handlebars.SafeString(""+ReflectionUtil.get(item, output));
+                    if (val != null && String.valueOf(val).equals(arg)) {
+                        return new Handlebars.SafeString(""+ReflectionUtil.get(item, output));
+                    }
                 } catch (Exception e) {
                     log.warn("find: "+e);
                 }
