@@ -39,6 +39,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicReference;
@@ -374,6 +375,7 @@ public class HandlebarsUtil extends AbstractTemplateLoader {
 
         hb.registerHelper("expr", (val1, options) -> {
             final String operator = options.param(0);
+            final String format = options.params.length > 2 ? options.param(2) : null;
             final Object val2 = getComparisonArgParam(options);
             final String v1 = val1.toString();
             final String v2 = val2.toString();
@@ -383,7 +385,7 @@ public class HandlebarsUtil extends AbstractTemplateLoader {
                 case "+": result = big(v1).add(big(v2)); break;
                 case "-": result = big(v1).subtract(big(v2)); break;
                 case "*": result = big(v1).multiply(big(v2)); break;
-                case "/": result = big(v1).divide(big(v2), BigDecimal.ROUND_HALF_EVEN); break;
+                case "/": result = big(v1).divide(big(v2), MathContext.DECIMAL128); break;
                 case "%": result = big(v1).remainder(big(v2)).abs(); break;
                 case "^": result = big(v1).pow(big(v2).intValue()); break;
                 default: return die("expr: invalid operator: "+operator);
@@ -391,12 +393,17 @@ public class HandlebarsUtil extends AbstractTemplateLoader {
 
             // can't use trigraph (?:) operator here, if we do then for some reason rval always ends up as a double
             final Number rval;
-            if (v1.contains(".") || v2.contains(".")) {
+            if (v1.contains(".") || v2.contains(".") || operator.equals("/")) {
                 rval = result.doubleValue();
             } else {
                 rval = result.intValue();
             }
-            return new Handlebars.SafeString(rval.toString());
+            if (format != null) {
+                final Locale locale = LocaleUtil.fromString(options.params.length > 3 && !empty(options.param(3)) ? options.param(3) : null);
+                return new Handlebars.SafeString(String.format(locale, format, rval));
+            } else {
+                return new Handlebars.SafeString(rval.toString());
+            }
         });
 
         hb.registerHelper("truncate", (Helper<Integer>) (max, options) -> {
