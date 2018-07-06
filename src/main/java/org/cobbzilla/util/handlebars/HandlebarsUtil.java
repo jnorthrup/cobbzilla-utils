@@ -654,7 +654,7 @@ public class HandlebarsUtil extends AbstractTemplateLoader {
             if (!tryAgain) return die("longVal: unparseable long: "+src+": "+e.getClass().getSimpleName()+": "+e.getMessage());
 
             // try to parse it in different formats
-            final Object t = TimeUtil.parse(src.toString());
+            final Object t = TimeUtil.parse(src.toString(), timeZone);
             return longVal(t, timeZone, false);
         }
     }

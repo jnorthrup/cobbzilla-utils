@@ -46,10 +46,25 @@ public class TimeUtil {
         return empty(time) ? null : formatter.parseDateTime(time).getMillis();
     }
 
+    public static Long parse(String time, DateTimeFormatter formatter, DateTimeZone timeZone) {
+        return empty(time) ? null : formatter.withZone(timeZone).parseDateTime(time).getMillis();
+    }
+
     public static Object parse(String val) {
         for (DateTimeFormatter f : DATE_TIME_FORMATS) {
             try {
                 return TimeUtil.parse(val, f);
+            } catch (Exception ignored) {
+                // noop
+            }
+        }
+        return null;
+    }
+
+    public static Object parse(String val, DateTimeZone timeZone) {
+        for (DateTimeFormatter f : DATE_TIME_FORMATS) {
+            try {
+                return TimeUtil.parse(val, f, timeZone);
             } catch (Exception ignored) {
                 // noop
             }
