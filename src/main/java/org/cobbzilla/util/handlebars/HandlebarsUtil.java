@@ -23,6 +23,7 @@ import org.cobbzilla.util.http.HttpContentTypes;
 import org.cobbzilla.util.io.FileResolver;
 import org.cobbzilla.util.io.FileUtil;
 import org.cobbzilla.util.io.PathListFileResolver;
+import org.cobbzilla.util.javascript.JsEngineFactory;
 import org.cobbzilla.util.reflect.ReflectionUtil;
 import org.cobbzilla.util.string.LocaleUtil;
 import org.cobbzilla.util.string.StringUtil;
@@ -688,6 +689,22 @@ public class HandlebarsUtil extends AbstractTemplateLoader {
         hb.registerHelper("us_zip", (src, options) -> {
             if (empty(src)) return "";
             return new Handlebars.SafeString(jurisdictionResolver.usZip(src.toString()));
+        });
+    }
+
+    public static void registerJavaScriptHelper(final Handlebars hb, JsEngineFactory jsEngineFactory) {
+        hb.registerHelper("js", (src, options) -> {
+            if (empty(src)) return "";
+
+            final String format = options.params.length > 0 && !empty(options.param(0)) ? options.param(0) : null;
+            final Locale locale = LocaleUtil.fromString(options.params.length > 1 && !empty(options.param(1)) ? options.param(1) : null);
+
+            final Map<String, Object> ctx = (Map<String, Object>) options.context.model();
+            final Object result = jsEngineFactory.getJs().evaluate(src.toString(), ctx);
+            if (result == null) return new Handlebars.SafeString("null");
+            return format != null
+                    ? new Handlebars.SafeString(String.format(locale, format, Double.valueOf(result.toString())))
+                    : new Handlebars.SafeString(result.toString());
         });
     }
 
