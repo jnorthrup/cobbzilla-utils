@@ -61,7 +61,7 @@ public class TimeUtil {
         return null;
     }
 
-    public static Object parse(String val, DateTimeZone timeZone) {
+    public static Long parse(String val, DateTimeZone timeZone) {
         for (DateTimeFormatter f : DATE_TIME_FORMATS) {
             try {
                 return TimeUtil.parse(val, f, timeZone);
