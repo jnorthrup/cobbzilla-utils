@@ -148,10 +148,10 @@ public class ZillaRuntime {
     public static BigInteger bigint(byte val) { return new BigInteger(String.valueOf(val)); }
 
     public static BigDecimal big(String val) { return new BigDecimal(val); }
-    public static BigDecimal big(double val) { return new BigDecimal(val); }
-    public static BigDecimal big(float val) { return new BigDecimal(val); }
-    public static BigDecimal big(long val) { return new BigDecimal(val); }
-    public static BigDecimal big(int val) { return new BigDecimal(val); }
+    public static BigDecimal big(double val) { return new BigDecimal(String.valueOf(val)); }
+    public static BigDecimal big(float val) { return new BigDecimal(String.valueOf(val)); }
+    public static BigDecimal big(long val) { return new BigDecimal(String.valueOf(val)); }
+    public static BigDecimal big(int val) { return new BigDecimal(String.valueOf(val)); }
     public static BigDecimal big(byte val) { return new BigDecimal(String.valueOf(val)); }
 
     public static int percent(int value, double pct) { return percent(value, pct, RoundingMode.HALF_UP); }
