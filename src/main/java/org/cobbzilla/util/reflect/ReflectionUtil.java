@@ -18,6 +18,7 @@ import java.util.Map;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static org.cobbzilla.util.collection.ArrayUtil.arrayToString;
+import static org.cobbzilla.util.daemon.ZillaRuntime.big;
 import static org.cobbzilla.util.daemon.ZillaRuntime.die;
 import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
 import static org.cobbzilla.util.string.StringUtil.uncapitalize;
@@ -93,10 +94,10 @@ public class ReflectionUtil {
 
     public static BigDecimal toBigDecimal(Object object) {
         if (object == null) return null;
-        if (object instanceof Double) return new BigDecimal((Double) object);
-        if (object instanceof Float) return new BigDecimal((Float) object);
-        if (object instanceof Number) return new BigDecimal(((Number) object).longValue());
-        if (object instanceof String) return new BigDecimal(object.toString());
+        if (object instanceof Double) return big((Double) object);
+        if (object instanceof Float) return big((Float) object);
+        if (object instanceof Number) return big(((Number) object).longValue());
+        if (object instanceof String) return big(object.toString());
         return null;
     }
 

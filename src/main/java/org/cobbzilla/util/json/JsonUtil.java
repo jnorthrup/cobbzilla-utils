@@ -16,6 +16,7 @@ import java.math.BigInteger;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static org.cobbzilla.util.daemon.ZillaRuntime.big;
 import static org.cobbzilla.util.daemon.ZillaRuntime.die;
 import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
 
@@ -375,7 +376,7 @@ public class JsonUtil {
         if (node instanceof IntNode) return new IntNode(Integer.parseInt(replacement));
         if (node instanceof LongNode) return new LongNode(Long.parseLong(replacement));
         if (node instanceof DoubleNode) return new DoubleNode(Double.parseDouble(replacement));
-        if (node instanceof DecimalNode) return new DecimalNode(new BigDecimal(replacement));
+        if (node instanceof DecimalNode) return new DecimalNode(big(replacement));
         if (node instanceof BigIntegerNode) return new BigIntegerNode(new BigInteger(replacement));
         return die("Path "+path+" refers to an unsupported ValueNode: "+ nodeClass);
     }
