@@ -378,6 +378,8 @@ public class ReflectionUtil {
         int copyCount = 0;
         final boolean isMap = dest instanceof Map;
         try {
+            if (src instanceof Map) copyFromMap(dest, (Map<String, Object>) src, exclude);
+
             checkGetter:
             for (Method getter : src.getClass().getMethods()) {
                 // only look for getters on the source object (methods with no arguments that have a return value)
@@ -487,8 +489,13 @@ public class ReflectionUtil {
      * @return the destination object
      */
     public static <T> T copyFromMap (T dest, Map<String, Object> src) {
+        return copyFromMap(dest, src, null);
+    }
+
+    public static <T> T copyFromMap (T dest, Map<String, Object> src, String[] exclude) {
         for (Map.Entry<String, Object> entry : src.entrySet()) {
             final String key = entry.getKey();
+            if (exclude != null && ArrayUtils.contains(exclude, key)) continue;
             final Object value = entry.getValue();
             if (value != null && Map.class.isAssignableFrom(value.getClass())) {
                 if (hasGetter(dest, key)) {
