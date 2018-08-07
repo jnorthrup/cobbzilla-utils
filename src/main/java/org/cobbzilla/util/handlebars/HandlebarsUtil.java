@@ -436,6 +436,13 @@ public class HandlebarsUtil extends AbstractTemplateLoader {
             return "";
         });
 
+        hb.registerHelper("first_nonempty", (thing, options) -> {
+            if (!empty(thing)) return new Handlebars.SafeString(thing.toString());
+            for (final Object param : options.params) {
+                if (!empty(param)) return new Handlebars.SafeString(param.toString());
+            }
+            return EMPTY_SAFE_STRING;
+        });
     }
 
     public static Object getComparisonArgParam(Options options) {
