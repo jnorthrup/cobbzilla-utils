@@ -69,6 +69,7 @@ public class HandlebarsUtil extends AbstractTemplateLoader {
     public static final String HB_LEND = StringUtils.repeat(HB_END_CHAR, 3);
 
     public static final String DEFAULT_FLOAT_FORMAT = "%1$,.3f";
+    public static final JsonStringEncoder JSON_STRING_ENCODER = new JsonStringEncoder();
 
     private String sourceName = "unknown";
 
@@ -258,6 +259,11 @@ public class HandlebarsUtil extends AbstractTemplateLoader {
         hb.registerHelper("json", (src, options) -> {
             if (empty(src)) return "";
             return new Handlebars.SafeString(json(src));
+        });
+
+        hb.registerHelper("escaped_json", (src, options) -> {
+            if (empty(src)) return "";
+            return new Handlebars.SafeString(new String(JSON_STRING_ENCODER.quoteAsString(json(src))));
         });
 
         hb.registerHelper("context", (src, options) -> {
