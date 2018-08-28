@@ -26,6 +26,12 @@ public class NameAndValue {
     }
 
     @Getter @Setter private String name;
+
+    public static String find(NameAndValue[] pairs, String name) {
+        for (NameAndValue pair : pairs) if (pair.getName().equals(name)) return pair.getValue();
+        return null;
+    }
+
     public boolean hasName () { return !empty(name); }
     @JsonIgnore public boolean getHasName () { return !empty(name); }
 
