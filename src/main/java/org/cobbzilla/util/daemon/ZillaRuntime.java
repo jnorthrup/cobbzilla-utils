@@ -15,6 +15,7 @@ import org.cobbzilla.util.string.StringUtil;
 
 import java.io.*;
 import java.lang.management.ManagementFactory;
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
@@ -28,6 +29,7 @@ import static org.apache.commons.collections.CollectionUtils.collect;
 import static org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace;
 import static org.cobbzilla.util.io.FileUtil.abs;
 import static org.cobbzilla.util.io.FileUtil.list;
+import static org.cobbzilla.util.reflect.ReflectionUtil.instantiate;
 import static org.cobbzilla.util.system.Sleep.sleep;
 
 /**
@@ -132,6 +134,28 @@ public class ZillaRuntime {
             }
         }
         return o.toString().length() == 0;
+    }
+
+    public static <T> T sorted(T thing) {
+        if (empty(thing)) return thing;
+        if (thing.getClass().isArray()) {
+            final Object[] copy = (Object[]) Array.newInstance(thing.getClass(), ((Object[])thing).length);
+            System.arraycopy(thing, 0, copy, 0 , copy.length);
+            Arrays.sort(copy);
+            return (T) copy;
+        }
+        if (thing instanceof Collection) {
+            final List copy = new ArrayList((Collection) thing);
+            Collections.sort(copy);
+            return (T) instantiate(thing.getClass(), copy);
+        }
+        return die("sorted: cannot sort a "+thing.getClass().getSimpleName()+", can only sort arrays and Collections");
+    }
+    public static <T> List sortedList(T thing) {
+        if (thing == null) return null;
+        if (thing instanceof Collection) return new ArrayList((Collection) thing);
+        if (thing instanceof Object[]) return Arrays.asList((Object[]) thing);
+        return die("sortedList: cannot sort a "+thing.getClass().getSimpleName()+", can only sort arrays and Collections");
     }
 
     public static Boolean safeBoolean(String val, Boolean ifNull) { return empty(val) ? ifNull : Boolean.valueOf(val); }
