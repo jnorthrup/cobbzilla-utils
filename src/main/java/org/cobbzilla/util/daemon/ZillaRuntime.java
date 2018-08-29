@@ -145,9 +145,11 @@ public class ZillaRuntime {
             return (T) copy;
         }
         if (thing instanceof Collection) {
-            final List copy = new ArrayList((Collection) thing);
-            Collections.sort(copy);
-            return (T) instantiate(thing.getClass(), copy);
+            final List list = new ArrayList((Collection) thing);
+            Collections.sort(list);
+            final Collection copy = (Collection) instantiate(thing.getClass());
+            copy.addAll(list);
+            return (T) copy;
         }
         return die("sorted: cannot sort a "+thing.getClass().getSimpleName()+", can only sort arrays and Collections");
     }
