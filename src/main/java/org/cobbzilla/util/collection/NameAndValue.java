@@ -28,6 +28,7 @@ public class NameAndValue {
     @Getter @Setter private String name;
 
     public static String find(NameAndValue[] pairs, String name) {
+        if (pairs == null) return null;
         for (NameAndValue pair : pairs) if (pair.getName().equals(name)) return pair.getValue();
         return null;
     }
