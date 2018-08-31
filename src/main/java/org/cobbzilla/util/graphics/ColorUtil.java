@@ -55,4 +55,14 @@ public class ColorUtil {
         return mode == ColorMode.rgb ? val : rgb2ansi(val);
     }
 
+    public static String ansiColor(int fg) { return ansiColor(fg, null); }
+
+    public static String ansiColor(int fg, Integer bg) {
+        final StringBuilder b = new StringBuilder();
+        b.append("\\033[38;5;")
+                .append(rgb2ansi(fg))
+                .append(bg == null ? "" : ";48;5;"+rgb2ansi(bg))
+                .append("m");
+        return b.toString();
+    }
 }

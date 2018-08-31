@@ -174,6 +174,10 @@ public class StringUtil {
         return clazz.getPackage().getName().replace('.', '/');
     }
 
+    public static String repeat (String s, int n) {
+        return new String(new char[n*s.length()]).replace("\0", s);
+    }
+
     public static String urlEncode (String s) {
         try {
             return URLEncoder.encode(s, UTF8);
