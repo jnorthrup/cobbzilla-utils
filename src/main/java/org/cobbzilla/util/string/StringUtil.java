@@ -4,6 +4,7 @@ import com.google.common.base.CaseFormat;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Transformer;
 import org.apache.commons.io.input.ReaderInputStream;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.LocaleUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.cobbzilla.util.javascript.JsEngine;
@@ -45,6 +46,10 @@ public class StringUtil {
     public static final String CRLF = "\r\n";
 
     public static final Transformer XFORM_TO_STRING = o -> String.valueOf(o);
+
+    public static final String[] VOWELS = {"e", "a", "o", "i", "u"};
+    public static boolean isVowel(String symbol) { return ArrayUtils.indexOf(VOWELS, symbol) != -1; }
+
     public static List<String> toStringCollection (Collection c) {
         return new ArrayList<>(CollectionUtils.collect(c, XFORM_TO_STRING));
     }
