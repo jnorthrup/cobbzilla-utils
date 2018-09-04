@@ -1,5 +1,8 @@
 package org.cobbzilla.util.reflect;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,15 +15,11 @@ import java.io.Closeable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static org.cobbzilla.util.collection.ArrayUtil.arrayToString;
-import static org.cobbzilla.util.daemon.ZillaRuntime.big;
-import static org.cobbzilla.util.daemon.ZillaRuntime.die;
-import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
+import static org.cobbzilla.util.daemon.ZillaRuntime.*;
 import static org.cobbzilla.util.string.StringUtil.uncapitalize;
 
 /**
@@ -312,6 +311,58 @@ public class ReflectionUtil {
     public static <T> T callFactoryMethod(Class<T> clazz, Object value) {
         final Method m = factoryMethod(clazz, value);
         return m != null ? (T) invokeStatic(m, value) : null;
+    }
+
+    public static Object scrubStrings(Object thing, String[] fields) {
+        if (empty(thing)) return thing;
+        if (thing.getClass().isPrimitive()
+                || thing instanceof String
+                || thing instanceof Number
+                || thing instanceof Enum) return thing;
+
+        if (thing instanceof JsonNode) {
+            if (thing instanceof ObjectNode) {
+                for (String field : fields) {
+                    if (((ObjectNode) thing).has(field)) {
+                        ((ObjectNode) thing).remove(field);
+                    }
+                }
+            } else if (thing instanceof ArrayNode) {
+                ArrayNode arrayNode = (ArrayNode) thing;
+                for (int i = 0; i < arrayNode.size(); i++) {
+                    scrubStrings(arrayNode.get(i), fields);
+                }
+            }
+        } else if (thing instanceof Map) {
+            final Map map = (Map) thing;
+            final Set toRemove = new HashSet();
+            for (Object e : map.entrySet()) {
+                Map.Entry entry = (Map.Entry) e;
+                if (ArrayUtils.contains(fields, entry.getKey().toString())) {
+                    toRemove.add(entry.getKey());
+                } else {
+                    scrubStrings(entry.getValue(), fields);
+                }
+            }
+            for (Object key : toRemove) map.remove(key);
+
+        } else if (Object[].class.isAssignableFrom(thing.getClass())) {
+            if ( !((Object[]) thing)[0].getClass().isPrimitive() ) {
+                scrubStrings(thing, fields);
+            }
+        } else {
+            for (String field : ReflectionUtil.toMap(thing).keySet()) {
+                final Object val = get(thing, field, null);
+                if (val != null) {
+                    if (ArrayUtils.contains(fields, field)) {
+                        setNull(thing, field, String.class);
+                    } else {
+                        scrubStrings(val, fields);
+                    }
+                }
+            }
+        }
+        return thing;
     }
 
     private enum Accessor { get, set }
