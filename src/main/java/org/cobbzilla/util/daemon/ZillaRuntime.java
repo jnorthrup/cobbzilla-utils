@@ -139,7 +139,8 @@ public class ZillaRuntime {
     public static <T> T sorted(T thing) {
         if (empty(thing)) return thing;
         if (thing.getClass().isArray()) {
-            final Object[] copy = (Object[]) Array.newInstance(thing.getClass(), ((Object[])thing).length);
+            final Object[] copy = (Object[]) Array.newInstance(thing.getClass().getComponentType(),
+                                                               ((Object[])thing).length);
             System.arraycopy(thing, 0, copy, 0 , copy.length);
             Arrays.sort(copy);
             return (T) copy;
