@@ -348,7 +348,13 @@ public class ReflectionUtil {
 
         } else if (Object[].class.isAssignableFrom(thing.getClass())) {
             if ( !((Object[]) thing)[0].getClass().isPrimitive() ) {
-                scrubStrings(thing, fields);
+                for (Object obj : ((Object[]) thing)) {
+                    scrubStrings(obj, fields);
+                }
+            }
+        } else if (thing instanceof Collection) {
+            for (Object obj : ((Collection) thing)) {
+                scrubStrings(obj, fields);
             }
         } else {
             for (String field : ReflectionUtil.toMap(thing).keySet()) {
