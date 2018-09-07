@@ -107,6 +107,7 @@ public class ReflectionUtil {
      * @return A Class&lt;clazz&gt; object
      */
     public static <T> Class<? extends T> forName(String clazz) {
+        if (empty(clazz)) return (Class<? extends T>) Object.class;
         if (clazz.endsWith("[]")) return arrayClass(forName(clazz.substring(0, clazz.length()-2)));
         try {
             return (Class<? extends T>) Class.forName(clazz);
