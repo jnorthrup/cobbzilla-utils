@@ -1,48 +1,20 @@
 package org.cobbzilla.util.json.main;
 
-import lombok.Cleanup;
-import lombok.Getter;
-import lombok.Setter;
-import org.cobbzilla.util.daemon.ZillaRuntime;
 import org.cobbzilla.util.io.FileUtil;
 import org.cobbzilla.util.json.JsonEdit;
 import org.cobbzilla.util.json.JsonEditOperation;
-import org.kohsuke.args4j.CmdLineException;
-import org.kohsuke.args4j.CmdLineParser;
+import org.cobbzilla.util.main.BaseMain;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-
-import static org.cobbzilla.util.daemon.ZillaRuntime.*;
 import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
 
-public class JsonEditor {
+public class JsonEditor extends BaseMain<JsonEditorOptions> {
 
-    @Getter @Setter private JsonEditorOptions options = new JsonEditorOptions();
-
-    public static void main(String[] args) throws Exception {
-        JsonEditor editor = new JsonEditor();
-        if (editor.init(args)) editor.run();
-    }
-
-    private boolean init(String[] args) {
-        final CmdLineParser parser = new CmdLineParser(getOptions());
-        try {
-            parser.parseArgument(args);
-            return true;
-
-        } catch (CmdLineException e) {
-            System.err.println(e.getMessage());
-            parser.printUsage(System.err);
-            return false;
-        }
-    }
+    public static void main(String[] args) throws Exception { main(JsonEditor.class, args); }
 
     public void run() throws Exception {
-        @Cleanup InputStream in = getInputStream();
+        final JsonEditorOptions options = getOptions();
         JsonEdit edit = new JsonEdit()
-                .setJsonData(in)
+                .setJsonData(options.getInputJson())
                 .addOperation(new JsonEditOperation()
                         .setType(options.getOperationType())
                         .setPath(options.getPath())
@@ -62,7 +34,4 @@ public class JsonEditor {
         System.exit(0);
     }
 
-    private InputStream getInputStream() throws FileNotFoundException {
-        return options.hasJsonFile() ? new FileInputStream(options.getJsonFile()) : System.in;
-    }
 }

@@ -84,6 +84,9 @@ public class JsonUtil {
         return mapper.writerWithView(view);
     }
 
+    public static ArrayNode newArrayNode() { return new ArrayNode(FULL_MAPPER.getNodeFactory()); }
+    public static ObjectNode newObjectNode() { return new ObjectNode(FULL_MAPPER.getNodeFactory()); }
+
     public static String find(JsonNode array, String name, String value, String returnValue) {
         if (array instanceof ArrayNode) {
             for (int i=0; i<array.size(); i++) {
@@ -129,7 +132,6 @@ public class JsonUtil {
             return e.toString();
         }
     }
-
 
     private static Map<String, ObjectWriter> viewWriters = new ConcurrentHashMap<>();
 
@@ -292,12 +294,17 @@ public class JsonUtil {
                 }
                 pathPart = pathPart.substring(0, bracketPos);
             }
-            node = node.get(pathPart);
-            if (node == null) {
-                nodePath.add(MISSING);
-                return nodePath;
+            if (!empty(pathPart)) {
+                node = node.get(pathPart);
+                if (node == null) {
+                    nodePath.add(MISSING);
+                    return nodePath;
+                }
+                nodePath.add(node);
+
+            } else if (nodePath.size() > 1) {
+                return die("findNodePath: invalid path: "+path);
             }
-            nodePath.add(node);
             if (index != -1) {
                 node = node.get(index);
                 nodePath.add(node);

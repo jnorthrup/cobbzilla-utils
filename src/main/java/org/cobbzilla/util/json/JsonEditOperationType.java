@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public enum JsonEditOperationType {
 
-    read, write, delete;
+    read, write, delete, sort;
 
     @JsonCreator public static JsonEditOperationType create(String value) { return valueOf(value.toLowerCase()); }
 
