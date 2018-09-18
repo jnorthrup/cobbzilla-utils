@@ -181,7 +181,7 @@ public class JsonEdit {
 
     private JsonNode sort(JsonNode root, List<JsonNode> path, JsonEditOperation operation) {
         final JsonNode array = path.get(path.size()-1);
-        final JsonNode parent = path.get(path.size()-2);
+        final JsonNode parent = path.size() == 1 ? array : path.get(path.size()-2);
         if (!array.isArray()) return die("sort: "+operation.getPath()+" is not an array: "+json(array));
 
         // sort array
@@ -192,6 +192,9 @@ public class JsonEdit {
         // create a new ArrayNode for the sorted array
         final ArrayNode newArray = newArrayNode();
         for (JsonNode n : sorted) newArray.add(n);
+
+        // if we are sorting a root-level array, just return it now
+        if (parent == array) return newArray;
 
         // find previous array node, remove it and add new one
         boolean replaced = false;
