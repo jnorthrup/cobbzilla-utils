@@ -191,14 +191,18 @@ public class HandlebarsUtil extends AbstractTemplateLoader {
                     } else if (value instanceof Map) {
                         setterCandidate.invoke(thing, apply(handlebars, (Map<String, Object>) value, ctx, altStart, altEnd));
 
-                    } else if (Object[].class.isAssignableFrom(value.getClass())) {
-                        final Object[] array = (Object[]) value;
-                        final Object[] rendered = new Object[array.length];
-                        for (int i=0; i<array.length; i++) {
-                            rendered[i] = applyReflectively(handlebars, array[i], ctx, altStart, altEnd);
-                        }
-                        setterCandidate.invoke(thing, rendered);
-
+//                    } else if (Object[].class.isAssignableFrom(value.getClass())) {
+//                        final Object[] array = (Object[]) value;
+//                        final Object[] rendered = new Object[array.length];
+//                        for (int i=0; i<array.length; i++) {
+//                            rendered[i] = applyReflectively(handlebars, array[i], ctx, altStart, altEnd);
+//                        }
+//                        try {
+//                            setterCandidate.invoke(thing, rendered);
+//                        } catch (Exception e) {
+//                            die(e);
+//                        }
+//
                     } else {
                         // recurse
                         setterCandidate.invoke(thing, applyReflectively(handlebars, value, ctx, altStart, altEnd));
