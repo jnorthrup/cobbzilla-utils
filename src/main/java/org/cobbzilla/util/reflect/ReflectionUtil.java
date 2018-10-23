@@ -803,6 +803,7 @@ public class ReflectionUtil {
                 target = MethodUtils.invokeMethod(target, isMethod, null);
             } catch (Exception e2) {
                 if (target instanceof Map) return ((Map) target).get(token);
+                if (target instanceof ObjectNode) return ((ObjectNode) target).get(token);
                 throw new IllegalArgumentException("Error calling "+methodName+" and "+isMethod+": "+e+", "+e2);
             }
         }
