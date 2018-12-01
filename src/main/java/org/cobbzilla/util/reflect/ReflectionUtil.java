@@ -116,6 +116,12 @@ public class ReflectionUtil {
         }
     }
 
+    public static Class[] forNames(String[] classNames) {
+        final List<Class> list = new ArrayList<>();
+        if (!empty(classNames)) for (String c : classNames) list.add(forName(c));
+        return list.toArray(new Class[list.size()]);
+    }
+
     public static <T> Class<? extends T> arrayClass (Class clazz) { return forName("[L"+clazz.getName()+";"); }
 
     /**
