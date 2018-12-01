@@ -8,12 +8,13 @@ import java.util.zip.ZipInputStream;
 
 import static org.cobbzilla.util.daemon.ZillaRuntime.die;
 import static org.cobbzilla.util.io.FileUtil.abs;
+import static org.cobbzilla.util.io.Tarball.isTarball;
 
 // zip-related code adapted from: https://stackoverflow.com/a/10634536/1251543
 public class Decompressors {
 
     public static TempDir unroll (File infile) throws Exception {
-        if (Tarball.isTarball(infile)) {
+        if (isTarball(infile)) {
             return Tarball.unroll(infile);
         } else if (isZipFile(infile.getName())) {
             final TempDir tempDir = new TempDir();
@@ -31,7 +32,7 @@ public class Decompressors {
     public static boolean isDecompressible(File file) { return isDecompressible(file.getName()); }
 
     public static boolean isDecompressible(String name) {
-        return Tarball.isTarball(name) || isZipFile(name);
+        return isTarball(name) || isZipFile(name);
     }
 
     private static void extractFile(ZipInputStream in, File outdir, String name) throws IOException {

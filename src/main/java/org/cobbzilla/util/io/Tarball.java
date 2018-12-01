@@ -45,10 +45,10 @@ public class Tarball {
         final FileInputStream fileIn = new FileInputStream(tarball);
         final CompressorInputStream zipIn;
 
-        if (path.endsWith(".gz") || path.endsWith(".tgz")) {
+        if (path.toLowerCase().endsWith(".gz") || path.toLowerCase().endsWith(".tgz")) {
             zipIn = new GzipCompressorInputStream(fileIn);
 
-        } else if (path.endsWith(".bz2")) {
+        } else if (path.toLowerCase().endsWith(".bz2")) {
             zipIn = new BZip2CompressorInputStream(fileIn);
 
         } else {

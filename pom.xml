@@ -316,8 +316,8 @@ cobbzilla-utils is available under the Apache License, version 2: http://www.apa
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>1.10</source>
+                    <target>1.10</target>
                     <showWarnings>true</showWarnings>
                 </configuration>
             </plugin>
