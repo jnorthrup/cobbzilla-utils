@@ -24,6 +24,7 @@ public class HttpContentTypes {
     public static final String APPLICATION_OCTET_STREAM = "application/octet-stream";
     public static final String UNKNOWN = APPLICATION_OCTET_STREAM;
     public static final String APPLICATION_ZIP = "application/zip";
+    public static final String APPLICATION_JAR = "application/java-archive";
     public static final String APPLICATION_GZIP = "application/gzip";
     // useful when constructing HttpRequestBeans that will be used against a JSON API
 
@@ -50,6 +51,7 @@ public class HttpContentTypes {
             case "json":             return APPLICATION_JSON;
             case "gz": case "tgz":   return APPLICATION_GZIP;
             case "zip":              return APPLICATION_ZIP;
+            case "jar":              return APPLICATION_JAR;
             case "txt":              return TEXT_PLAIN;
             case "csv":              return TEXT_CSV;
             default: return die("contentType: no content-type could be determined for name: "+name);
