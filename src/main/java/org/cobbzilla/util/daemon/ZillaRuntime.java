@@ -21,6 +21,7 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.*;
 import java.util.concurrent.Callable;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 import static java.lang.Long.toHexString;
@@ -298,4 +299,16 @@ public class ZillaRuntime {
 
     public static String stacktrace() { return getStackTrace(new Exception()); }
 
+    private static final AtomicBoolean selfDestructInitiated = new AtomicBoolean(false);
+    public static void setSelfDestruct (long t) { setSelfDestruct(t, 0); }
+    public static void setSelfDestruct (long t, int status) {
+        synchronized (selfDestructInitiated) {
+            if (!selfDestructInitiated.get()) {
+                daemon(() -> { sleep(t); System.exit(status); });
+                selfDestructInitiated.set(true);
+            } else {
+                log.warn("setSelfDestruct: already set!");
+            }
+        }
+    }
 }

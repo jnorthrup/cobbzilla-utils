@@ -15,8 +15,7 @@ import java.util.SortedSet;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.TimeUnit;
 
-import static org.cobbzilla.util.daemon.ZillaRuntime.die;
-import static org.cobbzilla.util.daemon.ZillaRuntime.now;
+import static org.cobbzilla.util.daemon.ZillaRuntime.*;
 import static org.cobbzilla.util.io.FileUtil.abs;
 import static org.cobbzilla.util.io.FileUtil.getDefaultTempDir;
 import static org.cobbzilla.util.system.Sleep.sleep;
@@ -62,9 +61,7 @@ public class TempDir extends File implements Closeable {
             }
         }
         public QuickTempReaper start () {
-            final Thread t = new Thread(this);
-            t.setDaemon(true);
-            t.start();
+            daemon(this);
             return this;
         }
     }

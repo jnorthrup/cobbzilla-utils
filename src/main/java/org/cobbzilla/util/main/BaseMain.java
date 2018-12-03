@@ -51,10 +51,12 @@ public abstract class BaseMain<OPT extends BaseMainOptions> {
 
         } catch (Exception e) {
             if (m == null || m.getOptions() == null || m.getOptions().isVerboseFatalErrors()) {
-                log.error("Unexpected error: " + e + (e.getCause() != null ? " (caused by " + e.getCause() + ")" : ""), e);
+                final String msg = "Unexpected error: " + e + (e.getCause() != null ? " (caused by " + e.getCause() + ")" : "");
+                log.error(msg, e);
                 ZillaRuntime.die("Unexpected error: " + e);
             } else {
-                log.error(e.getClass().getSimpleName()+(e.getMessage() != null ? ": "+e.getMessage() : ""));
+                final String msg = e.getClass().getSimpleName() + (e.getMessage() != null ? ": " + e.getMessage() : "");
+                log.error(msg);
             }
             returnValue = -1;
         } finally {
@@ -87,14 +89,18 @@ public abstract class BaseMain<OPT extends BaseMainOptions> {
     public static void err (String message) { System.err.println(message); }
 
     public <T> T die (String message) {
-        if (options.isVerboseFatalErrors()) log.error(message);
+        if (options.isVerboseFatalErrors()) {
+            log.error(message);
+        }
         err(message);
         System.exit(1);
         return null;
     }
 
     public <T> T die (String message, Exception e) {
-        if (options.isVerboseFatalErrors()) log.error(message, e);
+        if (options.isVerboseFatalErrors()) {
+            log.error(message, e);
+        }
         err(message + ": " + e.getClass().getName() + (!empty(e.getMessage()) ? ": "+e.getMessage(): ""));
         System.exit(1);
         return null;
