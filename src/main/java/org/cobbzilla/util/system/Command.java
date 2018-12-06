@@ -29,6 +29,7 @@ public class Command {
     @Getter @Setter private CommandLine commandLine;
     @Getter @Setter private String input;
     @Getter @Setter private byte[] rawInput;
+    @Getter @Setter private InputStream stdin;
     @Getter @Setter private File dir;
     @Getter @Setter private Map<String, String> env;
     private List<Integer> exitValues = DEFAULT_EXIT_VALUES;
@@ -46,9 +47,10 @@ public class Command {
     public Command(File executable) { this(abs(executable)); }
 
     public boolean hasDir () { return dir != null; }
-    public boolean hasInput () { return !empty(input) || !empty(rawInput); }
+    public boolean hasInput () { return !empty(input) || !empty(rawInput) || stdin != null; }
     public InputStream getInputStream () {
         if (!hasInput()) return null;
+        if (stdin != null) return stdin;
         if (rawInput != null) return new ByteArrayInputStream(rawInput);
         return new ByteArrayInputStream(input.getBytes(UTF8cs));
     }
