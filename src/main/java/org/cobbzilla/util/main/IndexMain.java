@@ -3,6 +3,7 @@ package org.cobbzilla.util.main;
 import com.google.common.collect.ImmutableMap;
 import org.cobbzilla.util.collection.ArrayUtil;
 import org.cobbzilla.util.io.main.FilesystemWatcherMain;
+import org.cobbzilla.util.io.main.JarTrimmerMain;
 import org.cobbzilla.util.json.main.JsonEditor;
 import org.cobbzilla.util.string.StringUtil;
 import org.slf4j.bridge.SLF4JBridgeHandler;
@@ -10,23 +11,19 @@ import org.slf4j.bridge.SLF4JBridgeHandler;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-import static org.cobbzilla.util.reflect.ReflectionUtil.get;
-import static org.cobbzilla.util.reflect.ReflectionUtil.instantiate;
-
 public class IndexMain {
 
-    public final Map<String, Class<?>> handlers
+    public static final Map<String, Class<?>> handlers
             = ImmutableMap.<String, Class<?>>builder()
             .put("json", JsonEditor.class)
             .put("fswatch", FilesystemWatcherMain.class)
+            .put("trim-jar", JarTrimmerMain.class)
             .build();
     public Map<String, Class<?>> getHandlers() { return handlers; }
 
     public static void main (String[] args) { main(IndexMain.class, args); }
 
     protected static void main(Class clazz, String[] args) {
-
-        final Map<String, Class<?>> handlers = (Map<String, Class<?>>) get(instantiate(clazz), "handlers");
 
         // redirect JUL -> logback using slf4j
         SLF4JBridgeHandler.removeHandlersForRootLogger();
