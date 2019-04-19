@@ -1,0 +1,6 @@
+<map id="org.cobbzilla.util.handlebars.HandlebarsUtil.applyReflectively" name="org.cobbzilla.util.handlebars.HandlebarsUtil.applyReflectively">
+<area shape="rect" id="node2" href="$d0/d1b/classorg_1_1cobbzilla_1_1util_1_1handlebars_1_1HandlebarsUtil_a3798bc5bdea2ec45b6d6fe4e84e2caab.html#a3798bc5bdea2ec45b6d6fe4e84e2caab" title="org.cobbzilla.util.handlebars.\lHandlebarsUtil.apply" alt="" coords="289,5,476,47"/>
+<area shape="rect" id="node3" href="$d0/d1b/classorg_1_1cobbzilla_1_1util_1_1handlebars_1_1HandlebarsUtil_a41e0478c31a1168fb6a8ba75ad22efd0.html#a41e0478c31a1168fb6a8ba75ad22efd0" title="Using reflection, we find all public getters of a thing (and if the getter returns an object..." alt="" coords="277,71,489,112"/>
+<area shape="rect" id="node4" href="$d0/d1b/classorg_1_1cobbzilla_1_1util_1_1handlebars_1_1HandlebarsUtil_a0d908831ccb66b40f33553cc94c59aed.html#a0d908831ccb66b40f33553cc94c59aed" title="org.cobbzilla.util.handlebars.\lHandlebarsUtil.canApplyReflectively" alt="" coords="265,136,500,177"/>
+<area shape="rect" id="node5" href="$de/d45/classorg_1_1cobbzilla_1_1util_1_1reflect_1_1ReflectionUtil_a7009ec7b051c37c7269c707996664b21.html#a7009ec7b051c37c7269c707996664b21" title="org.cobbzilla.util.reflect.\lReflectionUtil.setterForGetter" alt="" coords="286,201,479,243"/>
+</map>

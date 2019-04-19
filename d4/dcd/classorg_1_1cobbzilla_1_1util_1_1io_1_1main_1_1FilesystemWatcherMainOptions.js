@@ -1,0 +1,27 @@
+var classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions =
+[
+    [ "getDamperMillis", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a333ecb3fa0d406e81d3452c10bbed384.html#a333ecb3fa0d406e81d3452c10bbed384", null ],
+    [ "getWatchPaths", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_ac26bc6fc94ba728c61d870b5300d5776.html#ac26bc6fc94ba728c61d870b5300d5776", null ],
+    [ "hasCommand", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a4bd59e80159bbc56403283c05fae69b7.html#a4bd59e80159bbc56403283c05fae69b7", null ],
+    [ "hasPaths", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a2cd5299b6271ac3424afe20feb1ee2e8.html#a2cd5299b6271ac3424afe20feb1ee2e8", null ],
+    [ "command", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_acb0f247332fe07f5088ccf060e712125.html#acb0f247332fe07f5088ccf060e712125", null ],
+    [ "damper", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_aaf6a0d3df7c50276670323bc6a8afe85.html#aaf6a0d3df7c50276670323bc6a8afe85", null ],
+    [ "DEFAULT_MAXEVENTS", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a8ac2f3d0355e1afd98051bfaa9f76daa.html#a8ac2f3d0355e1afd98051bfaa9f76daa", null ],
+    [ "DEFAULT_TIMEOUT", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a38ef2d463398b6f61cf5b4192eff9c8d.html#a38ef2d463398b6f61cf5b4192eff9c8d", null ],
+    [ "LONGOPT_COMMAND", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a919b98371cdbc6b4a42ba733d92b08a2.html#a919b98371cdbc6b4a42ba733d92b08a2", null ],
+    [ "LONGOPT_DAMPER", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a80e3a961a43845754b010ed3017d130a.html#a80e3a961a43845754b010ed3017d130a", null ],
+    [ "LONGOPT_MAXEVENTS", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a69f3611b03104fa4152f762890274485.html#a69f3611b03104fa4152f762890274485", null ],
+    [ "LONGOPT_TIMEOUT", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_abff896023fa3c999f2320b562edd3867.html#abff896023fa3c999f2320b562edd3867", null ],
+    [ "maxEvents", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_acec279801e925dfb9c543606fd15e46b.html#acec279801e925dfb9c543606fd15e46b", null ],
+    [ "OPT_COMMAND", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_af741e1084ebc07b8a021fef398a4ab73.html#af741e1084ebc07b8a021fef398a4ab73", null ],
+    [ "OPT_DAMPER", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a072584bae34861d1890e3b33740f7456.html#a072584bae34861d1890e3b33740f7456", null ],
+    [ "OPT_MAXEVENTS", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a3d0dfad6b7e7bd78eb40742c29bfbfde.html#a3d0dfad6b7e7bd78eb40742c29bfbfde", null ],
+    [ "OPT_TIMEOUT", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a7c2036ee93721281e4b467c1ae4f8d74.html#a7c2036ee93721281e4b467c1ae4f8d74", null ],
+    [ "paths", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a5da9d43534e7ccf9f956e68d95157ec9.html#a5da9d43534e7ccf9f956e68d95157ec9", null ],
+    [ "timeout", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a30f7ed9c328c89e952b3a59d15cbc972.html#a30f7ed9c328c89e952b3a59d15cbc972", null ],
+    [ "USAGE_COMMAND", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a39a0639ad7fba743eb2a9436c43ed33f.html#a39a0639ad7fba743eb2a9436c43ed33f", null ],
+    [ "USAGE_DAMPER", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a7bd9f5cd4b9b5305d907dcb788bdf900.html#a7bd9f5cd4b9b5305d907dcb788bdf900", null ],
+    [ "USAGE_MAXEVENTS", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_a23ead8e4365d29cc4c154b3b8b109ba3.html#a23ead8e4365d29cc4c154b3b8b109ba3", null ],
+    [ "USAGE_PATHS", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_ac0016f206e99f23aeb86bd9d966d2ff1.html#ac0016f206e99f23aeb86bd9d966d2ff1", null ],
+    [ "USAGE_TIMEOUT", "d4/dcd/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1FilesystemWatcherMainOptions_af9ed0ffaab74f232802e158bb675d040.html#af9ed0ffaab74f232802e158bb675d040", null ]
+];

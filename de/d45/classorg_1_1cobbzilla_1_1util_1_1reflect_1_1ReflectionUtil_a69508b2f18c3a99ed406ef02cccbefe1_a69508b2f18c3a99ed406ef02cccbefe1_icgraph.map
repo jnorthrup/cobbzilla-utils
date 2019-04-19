@@ -1,0 +1,6 @@
+<map id="org.cobbzilla.util.reflect.ReflectionUtil.invoke_set_null" name="org.cobbzilla.util.reflect.ReflectionUtil.invoke_set_null">
+<area shape="rect" id="node2" href="$de/d45/classorg_1_1cobbzilla_1_1util_1_1reflect_1_1ReflectionUtil_a87f8ef4046a1b11a6ec353b0231e8409.html#a87f8ef4046a1b11a6ec353b0231e8409" title="org.cobbzilla.util.reflect.\lReflectionUtil.setNull" alt="" coords="248,71,408,112"/>
+<area shape="rect" id="node3" href="$de/d45/classorg_1_1cobbzilla_1_1util_1_1reflect_1_1ReflectionUtil_a95dbce7eb7134748d3b5e840d5c12e76.html#a95dbce7eb7134748d3b5e840d5c12e76" title="org.cobbzilla.util.reflect.\lReflectionUtil.scrubStrings" alt="" coords="464,5,643,47"/>
+<area shape="rect" id="node4" href="$de/d45/classorg_1_1cobbzilla_1_1util_1_1reflect_1_1ReflectionUtil_a84d2273bd96944773694999afac67e0f.html#a84d2273bd96944773694999afac67e0f" title="Call a setter with a hint as to what the type should be. " alt="" coords="473,71,633,112"/>
+<area shape="rect" id="node5" href="$d9/d53/classorg_1_1cobbzilla_1_1util_1_1reflect_1_1ReflectionUtilTest_a118873a54a51f1d753c779570548305d.html#a118873a54a51f1d753c779570548305d" title="org.cobbzilla.util.reflect.\lReflectionUtilTest.testGetSet" alt="" coords="456,136,651,177"/>
+</map>

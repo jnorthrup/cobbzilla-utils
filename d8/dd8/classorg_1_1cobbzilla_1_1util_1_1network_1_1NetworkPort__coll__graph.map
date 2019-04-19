@@ -1,0 +1,4 @@
+<map id="org.cobbzilla.util.network.NetworkPort" name="org.cobbzilla.util.network.NetworkPort">
+<area shape="rect" id="node2" href="$d1/d24/enumorg_1_1cobbzilla_1_1util_1_1network_1_1TransportProtocol.html" title="{org.cobbzilla.util.network.\lTransportProtocol\n|+ icmp\l+ udp\l|+ create()\l}" alt="" coords="5,20,176,127"/>
+<area shape="rect" id="node3" href="$d4/dcf/enumorg_1_1cobbzilla_1_1util_1_1network_1_1NetworkInterfaceType.html" title="{org.cobbzilla.util.network.\lNetworkInterfaceType\n|+ local\l+ world\l+ vpn\l+ vpn2\l|+ create()\l}" alt="" coords="200,5,371,141"/>
+</map>

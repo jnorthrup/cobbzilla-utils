@@ -1,0 +1,5 @@
+<map id="org.cobbzilla.util.handlebars.PdfMerger.insertImage" name="org.cobbzilla.util.handlebars.PdfMerger.insertImage">
+<area shape="rect" id="node2" href="$dc/d34/classorg_1_1cobbzilla_1_1util_1_1handlebars_1_1ImageInsertion_a272247b17de41423a3bee93a9999675a.html#a272247b17de41423a3bee93a9999675a" title="org.cobbzilla.util.handlebars.\lImageInsertion.getImageFile" alt="" coords="247,5,434,47"/>
+<area shape="rect" id="node3" href="$dc/d34/classorg_1_1cobbzilla_1_1util_1_1handlebars_1_1ImageInsertion_a46dcf4f62c0fec7dd315aba848f15746.html#a46dcf4f62c0fec7dd315aba848f15746" title="org.cobbzilla.util.handlebars.\lImageInsertion.init" alt="" coords="247,71,434,112"/>
+<area shape="rect" id="node4" href="$d9/d58/classorg_1_1cobbzilla_1_1util_1_1handlebars_1_1PdfMerger_a6b25a2d273a7b2dd9da38b88a6b95ab1.html#a6b25a2d273a7b2dd9da38b88a6b95ab1" title="org.cobbzilla.util.handlebars.\lPdfMerger.insertImageOnPage" alt="" coords="240,136,441,177"/>
+</map>

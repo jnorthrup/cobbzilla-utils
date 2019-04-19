@@ -1,0 +1,6 @@
+<map id="org.cobbzilla.util.reflect.ReflectionUtil.copy" name="org.cobbzilla.util.reflect.ReflectionUtil.copy">
+<area shape="rect" id="node2" href="$de/d45/classorg_1_1cobbzilla_1_1util_1_1reflect_1_1ReflectionUtil_a9e164a3a571e48e299d23723cd9a5521.html#a9e164a3a571e48e299d23723cd9a5521" title="Call setters on an object based on keys and values in a Map. " alt="" coords="216,5,404,47"/>
+<area shape="rect" id="node3" href="$de/d45/classorg_1_1cobbzilla_1_1util_1_1reflect_1_1ReflectionUtil_a053ac60f7e5ede60512a5db8c8397fe6.html#a053ac60f7e5ede60512a5db8c8397fe6" title="org.cobbzilla.util.reflect.\lReflectionUtil.fieldName" alt="" coords="228,71,392,112"/>
+<area shape="rect" id="node4" href="$de/d45/classorg_1_1cobbzilla_1_1util_1_1reflect_1_1ReflectionUtil_a6e7dcf9fe3989566b42625155f9530ba.html#a6e7dcf9fe3989566b42625155f9530ba" title="org.cobbzilla.util.reflect.\lReflectionUtil.isIgnored" alt="" coords="230,136,390,177"/>
+<area shape="rect" id="node5" href="$de/d45/classorg_1_1cobbzilla_1_1util_1_1reflect_1_1ReflectionUtil_a7009ec7b051c37c7269c707996664b21.html#a7009ec7b051c37c7269c707996664b21" title="org.cobbzilla.util.reflect.\lReflectionUtil.setterForGetter" alt="" coords="213,201,407,243"/>
+</map>

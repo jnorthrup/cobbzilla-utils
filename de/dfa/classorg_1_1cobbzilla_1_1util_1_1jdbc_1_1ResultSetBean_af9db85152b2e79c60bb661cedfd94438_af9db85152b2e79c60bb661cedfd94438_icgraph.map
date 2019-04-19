@@ -1,0 +1,5 @@
+<map id="org.cobbzilla.util.jdbc.ResultSetBean.isEmpty" name="org.cobbzilla.util.jdbc.ResultSetBean.isEmpty">
+<area shape="rect" id="node2" href="$de/dfa/classorg_1_1cobbzilla_1_1util_1_1jdbc_1_1ResultSetBean_ae7d29d42316d4768d4f4475c7a1a850b.html#ae7d29d42316d4768d4f4475c7a1a850b" title="org.cobbzilla.util.jdbc.\lResultSetBean.count" alt="" coords="235,5,383,47"/>
+<area shape="rect" id="node3" href="$de/dfa/classorg_1_1cobbzilla_1_1util_1_1jdbc_1_1ResultSetBean_a765006fff59e972d47fca26d22e8e028.html#a765006fff59e972d47fca26d22e8e028" title="org.cobbzilla.util.jdbc.\lResultSetBean.countOrZero" alt="" coords="216,71,403,112"/>
+<area shape="rect" id="node4" href="$de/dfa/classorg_1_1cobbzilla_1_1util_1_1jdbc_1_1ResultSetBean_abe2f44797da330f09c4f7732a561ec4a.html#abe2f44797da330f09c4f7732a561ec4a" title="org.cobbzilla.util.jdbc.\lResultSetBean.rowCount" alt="" coords="224,136,395,177"/>
+</map>

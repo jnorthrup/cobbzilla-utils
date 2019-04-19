@@ -1,0 +1,6 @@
+<map id="org.cobbzilla.util.http.HttpUtil.getStreamResponse" name="org.cobbzilla.util.http.HttpUtil.getStreamResponse">
+<area shape="rect" id="node2" href="$d9/d6b/classorg_1_1cobbzilla_1_1util_1_1http_1_1HttpUtil_a77e04ecb730443c9270c369035edb80c.html#a77e04ecb730443c9270c369035edb80c" title="org.cobbzilla.util.http.\lHttpUtil.addStreamHeader" alt="" coords="254,5,430,47"/>
+<area shape="rect" id="node3" href="$df/dcc/classorg_1_1cobbzilla_1_1util_1_1http_1_1HttpRequestBean_a7e2ff99eb3d51efea783da4f7e2b7842.html#a7e2ff99eb3d51efea783da4f7e2b7842" title="org.cobbzilla.util.http.\lHttpRequestBean.hasStream" alt="" coords="245,71,439,112"/>
+<area shape="rect" id="node4" href="$d3/d9f/classorg_1_1cobbzilla_1_1util_1_1http_1_1HttpResponseBean_a03c9eb2ea4c3a7524ca698d0b27f3960.html#a03c9eb2ea4c3a7524ca698d0b27f3960" title="org.cobbzilla.util.http.\lHttpResponseBean.setEntity" alt="" coords="246,136,438,177"/>
+<area shape="rect" id="node5" href="$df/dcc/classorg_1_1cobbzilla_1_1util_1_1http_1_1HttpRequestBean_a0686fc433e0902c281b119f40790f332.html#a0686fc433e0902c281b119f40790f332" title="org.cobbzilla.util.http.\lHttpRequestBean.withHeader" alt="" coords="244,201,440,243"/>
+</map>

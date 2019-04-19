@@ -1,0 +1,4 @@
+<map id="org.cobbzilla.util.reflect.ObjectFactory&lt; T &gt;" name="org.cobbzilla.util.reflect.ObjectFactory&lt; T &gt;">
+<area shape="rect" id="node2" href="$d0/d24/classorg_1_1cobbzilla_1_1util_1_1http_1_1PooledHttpClientFactory.html" title="{org::cobbzilla::util\l::http::PooledHttpClientFactory\l\&lt; CloseableHttpClient \&gt;\n|&#45; host\l&#45; maxConnections\l|+ create()\l+ create()\l}" alt="" coords="5,175,208,311"/>
+<area shape="rect" id="node3" href="$da/dc9/interfaceorg_1_1cobbzilla_1_1util_1_1reflect_1_1ObjectFactory.html" title="{org.cobbzilla.util.reflect.\lObjectFactory\&lt; CloseableHttpClient \&gt;\n||+ create()\l+ create()\l}" alt="" coords="232,189,477,296"/>
+</map>

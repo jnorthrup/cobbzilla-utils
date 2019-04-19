@@ -1,0 +1,25 @@
+var classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil =
+[
+    [ "XPathUtil", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_af7cb0baf61556663e26144e73eae7a15.html#af7cb0baf61556663e26144e73eae7a15", null ],
+    [ "XPathUtil", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_a86949f4f840e43810f13bd70e7e1eb3f.html#a86949f4f840e43810f13bd70e7e1eb3f", null ],
+    [ "XPathUtil", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_a72c80c9547c5cb65573896ffae27059a.html#a72c80c9547c5cb65573896ffae27059a", null ],
+    [ "XPathUtil", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_ac8895bcc40330c91eef577c0aed22576.html#ac8895bcc40330c91eef577c0aed22576", null ],
+    [ "XPathUtil", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_a586fd3d292985b9f9c0bf492cf2f8fcf.html#a586fd3d292985b9f9c0bf492cf2f8fcf", null ],
+    [ "XPathUtil", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_adb1823205e4fed63460738a9e7f44035.html#adb1823205e4fed63460738a9e7f44035", null ],
+    [ "applyXPaths", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_a58c0dede4023221f5140cd1b93282afb.html#a58c0dede4023221f5140cd1b93282afb", null ],
+    [ "applyXPaths", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_a800926e2c928e5fbc8a65de1441d8cba.html#a800926e2c928e5fbc8a65de1441d8cba", null ],
+    [ "applyXPaths", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_a9dcb13fe4599a9a128c4fb11e287ac83.html#a9dcb13fe4599a9a128c4fb11e287ac83", null ],
+    [ "getDocument", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_a406de4e750c101bfb95553111fd3ff08.html#a406de4e750c101bfb95553111fd3ff08", null ],
+    [ "getDocument", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_aeec439b2841ad394850449d35b6c3947.html#aeec439b2841ad394850449d35b6c3947", null ],
+    [ "getFirstMatch", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_aa383fbd117e1851b87e98e30e02a6936.html#aa383fbd117e1851b87e98e30e02a6936", null ],
+    [ "getFirstMatchList", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_a007e5e25caa693a3ffa7b23b5f56643a.html#a007e5e25caa693a3ffa7b23b5f56643a", null ],
+    [ "getFirstMatchList", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_a4351aec852a0fdef232cb0447ade3d34.html#a4351aec852a0fdef232cb0447ade3d34", null ],
+    [ "getFirstMatchMap", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_a528fd830b0a378b4eb6ecd678ef7082a.html#a528fd830b0a378b4eb6ecd678ef7082a", null ],
+    [ "getFirstMatchText", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_aabe7a39f5eb2e65014b99cc65e31caff.html#aabe7a39f5eb2e65014b99cc65e31caff", null ],
+    [ "getFirstMatchText", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_a7ea05f061895c5c0000f627651ee9aaa.html#a7ea05f061895c5c0000f627651ee9aaa", null ],
+    [ "getStrings", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_a1fd8f0b638eb162502c9ccb7e71e204d.html#a1fd8f0b638eb162502c9ccb7e71e204d", null ],
+    [ "isTextNode", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_a9084eb4daa7b5a675876836b64f086d6.html#a9084eb4daa7b5a675876836b64f086d6", null ],
+    [ "DOC_ROOT_XPATH", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_abd17035a8ee18bbff5a8bcd7e48496f8.html#abd17035a8ee18bbff5a8bcd7e48496f8", null ],
+    [ "pathExpressions", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_ae630dd706b249da2ee4c5dae6d1b9157.html#ae630dd706b249da2ee4c5dae6d1b9157", null ],
+    [ "useTidy", "dd/d36/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XPathUtil_ad8e2e17305d44d546834cc06a32b738d.html#ad8e2e17305d44d546834cc06a32b738d", null ]
+];

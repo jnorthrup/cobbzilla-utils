@@ -1,0 +1,4 @@
+<map id="org.cobbzilla.util.reflect.ReflectionUtil.toMap" name="org.cobbzilla.util.reflect.ReflectionUtil.toMap">
+<area shape="rect" id="node2" href="$de/d45/classorg_1_1cobbzilla_1_1util_1_1reflect_1_1ReflectionUtil_a70bf98d7d211bdca858059b322006685.html#a70bf98d7d211bdca858059b322006685" title="Make a copy of the object, assuming its class has a copy constructor. " alt="" coords="213,5,373,47"/>
+<area shape="rect" id="node3" href="$de/d45/classorg_1_1cobbzilla_1_1util_1_1reflect_1_1ReflectionUtil_af6f8b7bb888cb263ced2fda7d1e06007.html#af6f8b7bb888cb263ced2fda7d1e06007" title="Create an instance of a class, only throwing unchecked exceptions. " alt="" coords="421,5,587,47"/>
+</map>

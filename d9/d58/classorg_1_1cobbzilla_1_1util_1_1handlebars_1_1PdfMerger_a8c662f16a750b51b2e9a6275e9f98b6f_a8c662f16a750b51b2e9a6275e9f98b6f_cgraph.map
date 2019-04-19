@@ -1,0 +1,8 @@
+<map id="org.cobbzilla.util.handlebars.PdfMerger.merge" name="org.cobbzilla.util.handlebars.PdfMerger.merge">
+<area shape="rect" id="node2" href="$d9/d58/classorg_1_1cobbzilla_1_1util_1_1handlebars_1_1PdfMerger_a2ef83e677027e253ea4f30f9a41b6f6c.html#a2ef83e677027e253ea4f30f9a41b6f6c" title="org.cobbzilla.util.handlebars.\lPdfMerger.insertImage" alt="" coords="240,88,427,129"/>
+<area shape="rect" id="node6" href="$d9/d58/classorg_1_1cobbzilla_1_1util_1_1handlebars_1_1PdfMerger_a18931c7af52fae879d678d72875d45e3.html#a18931c7af52fae879d678d72875d45e3" title="org.cobbzilla.util.handlebars.\lPdfMerger.safeApply" alt="" coords="240,169,427,211"/>
+<area shape="rect" id="node3" href="$dc/d34/classorg_1_1cobbzilla_1_1util_1_1handlebars_1_1ImageInsertion_a272247b17de41423a3bee93a9999675a.html#a272247b17de41423a3bee93a9999675a" title="org.cobbzilla.util.handlebars.\lImageInsertion.getImageFile" alt="" coords="482,5,669,47"/>
+<area shape="rect" id="node4" href="$dc/d34/classorg_1_1cobbzilla_1_1util_1_1handlebars_1_1ImageInsertion_a46dcf4f62c0fec7dd315aba848f15746.html#a46dcf4f62c0fec7dd315aba848f15746" title="org.cobbzilla.util.handlebars.\lImageInsertion.init" alt="" coords="482,71,669,112"/>
+<area shape="rect" id="node5" href="$d9/d58/classorg_1_1cobbzilla_1_1util_1_1handlebars_1_1PdfMerger_a6b25a2d273a7b2dd9da38b88a6b95ab1.html#a6b25a2d273a7b2dd9da38b88a6b95ab1" title="org.cobbzilla.util.handlebars.\lPdfMerger.insertImageOnPage" alt="" coords="475,136,676,177"/>
+<area shape="rect" id="node7" href="$d0/d1b/classorg_1_1cobbzilla_1_1util_1_1handlebars_1_1HandlebarsUtil_a3798bc5bdea2ec45b6d6fe4e84e2caab.html#a3798bc5bdea2ec45b6d6fe4e84e2caab" title="org.cobbzilla.util.handlebars.\lHandlebarsUtil.apply" alt="" coords="482,201,669,243"/>
+</map>

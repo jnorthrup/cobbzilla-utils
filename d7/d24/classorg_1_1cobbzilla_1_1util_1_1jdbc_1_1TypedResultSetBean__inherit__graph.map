@@ -1,0 +1,3 @@
+<map id="org.cobbzilla.util.jdbc.TypedResultSetBean&lt; T &gt;" name="org.cobbzilla.util.jdbc.TypedResultSetBean&lt; T &gt;">
+<area shape="rect" id="node2" href="$de/dfa/classorg_1_1cobbzilla_1_1util_1_1jdbc_1_1ResultSetBean.html" title="{org.cobbzilla.util.jdbc.\lResultSetBean\n|+ EMPTY\l&#45; rows\l&#45; rsMetaData\l|+ isEmpty()\l+ rowCount()\l+ first()\l+ count()\l+ countOrZero()\l+ ResultSetBean()\l+ ResultSetBean()\l+ ResultSetBean()\l+ getRsMetaData()\l+ getRsMetaData()\l+ row2map()\l+ row2map()\l+ row2map()\l+ getColumns()\l~ getColumnValues()\l&#45; read()\l&#45; read()\l&#45; read()\l}" alt="" coords="5,5,153,376"/>
+</map>

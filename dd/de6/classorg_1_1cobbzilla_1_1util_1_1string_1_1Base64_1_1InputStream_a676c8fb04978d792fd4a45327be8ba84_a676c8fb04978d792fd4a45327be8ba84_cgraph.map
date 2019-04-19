@@ -1,0 +1,5 @@
+<map id="org.cobbzilla.util.string.Base64.InputStream.read" name="org.cobbzilla.util.string.Base64.InputStream.read">
+<area shape="rect" id="node2" href="$df/da0/classorg_1_1cobbzilla_1_1util_1_1string_1_1Base64_ac381dcac205c5ff0ae28dada8c04505b.html#ac381dcac205c5ff0ae28dada8c04505b" title="Decodes four bytes from array source and writes the resulting bytes (up to three of them) to destinat..." alt="" coords="224,5,380,47"/>
+<area shape="rect" id="node4" href="$df/da0/classorg_1_1cobbzilla_1_1util_1_1string_1_1Base64_a65d2008e80f41c490a035b77f4628348.html#a65d2008e80f41c490a035b77f4628348" title="Encodes up to the first three bytes of array threeBytes and returns a four&#45;byte array in Base64 notat..." alt="" coords="224,71,380,112"/>
+<area shape="rect" id="node3" href="$df/da0/classorg_1_1cobbzilla_1_1util_1_1string_1_1Base64_aac1f79f712d42154ced1cddbc3f037dc.html#aac1f79f712d42154ced1cddbc3f037dc" title="Returns one of the _SOMETHING_DECODABET byte arrays depending on the options specified. " alt="" coords="428,5,584,47"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="org.cobbzilla.util.io.BufferedFilesystemWatcher" name="org.cobbzilla.util.io.BufferedFilesystemWatcher">
+<area shape="rect" id="node2" href="$d3/d98/classorg_1_1cobbzilla_1_1util_1_1io_1_1FilesystemWatcher.html" title="{org.cobbzilla.util.io.Filesystem\lWatcher\n|+ STOP_TIMEOUT\l&#45; thread\l|+ FilesystemWatcher()\l+ FilesystemWatcher()\l+ start()\l+ stop()\l+ close()\l+ toFile()\l+ run()\l# handleEvent()\l# onDirCreated()\l# onFileCreated()\l# onDirModified()\l# onFileModified()\l# onDirDeleted()\l# onFileDeleted()\l# getSleepWhileNotExists()\l# getSleepAfterUnexpectedError()\l}" alt="" coords="232,145,451,472"/>
+<area shape="rect" id="node7" href="$d3/d80/classorg_1_1cobbzilla_1_1util_1_1io_1_1BufferedFilesystemWatcher_1_1BfsMonitor.html" title="{org.cobbzilla.util.io.Buffered\lFilesystemWatcher.BfsMonitor\n|+ alive\l|+ run()\l}" alt="" coords="5,263,208,355"/>
+</map>

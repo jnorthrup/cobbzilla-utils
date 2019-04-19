@@ -1,0 +1,6 @@
+<map id="org.cobbzilla.util.xml.XmlUtil.findLargest" name="org.cobbzilla.util.xml.XmlUtil.findLargest">
+<area shape="rect" id="node2" href="$d1/d5b/classorg_1_1cobbzilla_1_1util_1_1xml_1_1XmlUtil_aab50858331cbf0e74d3058e0f5bcefe3.html#aab50858331cbf0e74d3058e0f5bcefe3" title="org.cobbzilla.util.xml.Xml\lUtil.applyRecursively" alt="" coords="234,5,402,47"/>
+<area shape="rect" id="node4" href="$d6/d2a/interfaceorg_1_1cobbzilla_1_1util_1_1xml_1_1ElementMatcher_a1ae0943fe9d09a67f7e1bc8bdab7cf81.html#a1ae0943fe9d09a67f7e1bc8bdab7cf81" title="org.cobbzilla.util.xml.Element\lMatcher.matches" alt="" coords="221,71,415,112"/>
+<area shape="rect" id="node5" href="$d1/d1c/interfaceorg_1_1cobbzilla_1_1util_1_1xml_1_1ElementTransformer_abaaaef241857522e9a15b75123735302.html#abaaaef241857522e9a15b75123735302" title="org.cobbzilla.util.xml.Element\lTransformer.transform" alt="" coords="221,136,415,177"/>
+<area shape="rect" id="node3" href="$d8/dba/interfaceorg_1_1cobbzilla_1_1util_1_1xml_1_1XmlElementFunction_a3ae4813d1fe401fd3253188b0512d971.html#a3ae4813d1fe401fd3253188b0512d971" title="org.cobbzilla.util.xml.Xml\lElementFunction.apply" alt="" coords="463,5,631,47"/>
+</map>

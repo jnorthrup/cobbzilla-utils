@@ -1,0 +1,3 @@
+<map id="org.cobbzilla.util.main.BaseMain&lt; OPT extends BaseMainOptions &gt;" name="org.cobbzilla.util.main.BaseMain&lt; OPT extends BaseMainOptions &gt;">
+<area shape="rect" id="node3" href="$d7/d90/classorg_1_1cobbzilla_1_1util_1_1main_1_1BaseMainOptions.html" title="{org.cobbzilla.util.main.\lBaseMainOptions\n|+ USAGE_HELP\l+ OPT_HELP\l+ LONGOPT_HELP\l+ USAGE_VERBOSE_FATAL\l_ERRORS\l+ OPT_VERBOSE_FATAL_ERRORS\l+ LONGOPT_VERBOSE_FATAL\l_ERRORS\l&#45; help\l&#45; verboseFatalErrors\l|+ out()\l+ err()\l+ required()\l+ requiredAndDie()\l+ inStream()\l+ outStream()\l+ reader()\l+ writer()\l}" alt="" coords="141,5,387,332"/>
+</map>

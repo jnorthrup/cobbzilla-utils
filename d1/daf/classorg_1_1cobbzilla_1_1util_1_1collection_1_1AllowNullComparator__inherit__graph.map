@@ -1,0 +1,5 @@
+<map id="org.cobbzilla.util.collection.AllowNullComparator&lt; E &gt;" name="org.cobbzilla.util.collection.AllowNullComparator&lt; E &gt;">
+<area shape="rect" id="node3" href="$d5/def/classorg_1_1cobbzilla_1_1util_1_1collection_1_1AllowNullComparator.html" title="{org.cobbzilla.util.collection.\lAllowNullComparator\&lt; String \&gt;\n|+ STRING\l+ INT\l+ LONG\l|+ compare()\l}" alt="" coords="5,316,208,437"/>
+<area shape="rect" id="node4" href="$d5/def/classorg_1_1cobbzilla_1_1util_1_1collection_1_1AllowNullComparator.html" title="{org.cobbzilla.util.collection.\lAllowNullComparator\&lt; Integer \&gt;\n|+ STRING\l+ INT\l+ LONG\l|+ compare()\l}" alt="" coords="233,316,442,437"/>
+<area shape="rect" id="node5" href="$d5/def/classorg_1_1cobbzilla_1_1util_1_1collection_1_1AllowNullComparator.html" title="{org.cobbzilla.util.collection.\lAllowNullComparator\&lt; Long \&gt;\n|+ STRING\l+ INT\l+ LONG\l|+ compare()\l}" alt="" coords="467,316,664,437"/>
+</map>

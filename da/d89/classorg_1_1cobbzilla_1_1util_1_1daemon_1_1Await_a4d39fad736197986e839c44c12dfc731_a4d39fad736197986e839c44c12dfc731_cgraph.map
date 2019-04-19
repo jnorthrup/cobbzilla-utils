@@ -1,0 +1,7 @@
+<map id="org.cobbzilla.util.daemon.Await.awaitAll" name="org.cobbzilla.util.daemon.Await.awaitAll">
+<area shape="rect" id="node2" href="$d4/d54/classorg_1_1cobbzilla_1_1util_1_1daemon_1_1AwaitResult_aaad726a35658a2e0f41b07b3fe75e7e0.html#aaad726a35658a2e0f41b07b3fe75e7e0" title="org.cobbzilla.util.daemon.\lAwaitResult.fail" alt="" coords="224,5,395,47"/>
+<area shape="rect" id="node3" href="$d5/d7f/interfaceorg_1_1cobbzilla_1_1util_1_1time_1_1ClockProvider_a74aa22a448bd9e33c80b570ccb701682.html#a74aa22a448bd9e33c80b570ccb701682" title="org.cobbzilla.util.time.\lClockProvider.now" alt="" coords="235,71,384,112"/>
+<area shape="rect" id="node4" href="$d4/d54/classorg_1_1cobbzilla_1_1util_1_1daemon_1_1AwaitResult_ade929a6a2048ec86a1c87f990d164399.html#ade929a6a2048ec86a1c87f990d164399" title="org.cobbzilla.util.daemon.\lAwaitResult.success" alt="" coords="224,136,395,177"/>
+<area shape="rect" id="node5" href="$d4/d54/classorg_1_1cobbzilla_1_1util_1_1daemon_1_1AwaitResult_a04eb314b90e93a8df116f6027218456a.html#a04eb314b90e93a8df116f6027218456a" title="org.cobbzilla.util.daemon.\lAwaitResult.timeout" alt="" coords="224,201,395,243"/>
+<area shape="rect" id="node6" href="$d4/d54/classorg_1_1cobbzilla_1_1util_1_1daemon_1_1AwaitResult_a5f9aae52339e58b19827d1d6939d2b4b.html#a5f9aae52339e58b19827d1d6939d2b4b" title="org.cobbzilla.util.daemon.\lAwaitResult.timedOut" alt="" coords="443,201,613,243"/>
+</map>

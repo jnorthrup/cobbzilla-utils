@@ -1,0 +1,4 @@
+<map id="org.cobbzilla.util.dns.DnsRecord" name="org.cobbzilla.util.dns.DnsRecord">
+<area shape="rect" id="node2" href="$d4/d66/classorg_1_1cobbzilla_1_1util_1_1dns_1_1DnsRecordBase.html" title="{org.cobbzilla.util.dns.Dns\lRecordBase\n|&#45; fqdn\l&#45; value\l|+ hasFqdn()\l+ getNormalFqdn()\l+ hasType()\l+ hasValue()\l+ getMatcher()\l+ match()\l}" alt="" coords="20,292,189,472"/>
+<area shape="rect" id="node3" href="$d0/d96/enumorg_1_1cobbzilla_1_1util_1_1dns_1_1DnsType.html" title="{org.cobbzilla.util.dns.DnsType\n|+ A\l+ AAAA\l+ CNAME\l+ MX\l+ NS\l+ TXT\l+ SOA\l+ PTR\l+ RP\l+ LOC\land 23 more...\l|+ create()\l}" alt="" coords="5,5,204,229"/>
+</map>

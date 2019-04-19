@@ -1,0 +1,8 @@
+<map id="org.cobbzilla.util.daemon.SimpleDaemon.stopWithPossibleKill" name="org.cobbzilla.util.daemon.SimpleDaemon.stopWithPossibleKill">
+<area shape="rect" id="node2" href="$dc/d43/classorg_1_1cobbzilla_1_1util_1_1daemon_1_1SimpleDaemon_a41b78bee5f95d5fbec18ca02098e2e59.html#a41b78bee5f95d5fbec18ca02098e2e59" title="org.cobbzilla.util.daemon.\lSimpleDaemon.getIsAlive" alt="" coords="288,5,461,47"/>
+<area shape="rect" id="node3" href="$dc/d43/classorg_1_1cobbzilla_1_1util_1_1daemon_1_1SimpleDaemon_a850446997db65fd03443f4eaf596ca30.html#a850446997db65fd03443f4eaf596ca30" title="org.cobbzilla.util.daemon.\lSimpleDaemon.kill" alt="" coords="289,71,460,112"/>
+<area shape="rect" id="node5" href="$dc/d43/classorg_1_1cobbzilla_1_1util_1_1daemon_1_1SimpleDaemon_a664531b19c1fecdddff2fb2e64c97726.html#a664531b19c1fecdddff2fb2e64c97726" title="org.cobbzilla.util.daemon.\lSimpleDaemon.start" alt="" coords="289,136,460,177"/>
+<area shape="rect" id="node6" href="$dc/d43/classorg_1_1cobbzilla_1_1util_1_1daemon_1_1SimpleDaemon_a29831708365679ff068883aae27e0bd8.html#a29831708365679ff068883aae27e0bd8" title="org.cobbzilla.util.daemon.\lSimpleDaemon.stop" alt="" coords="289,201,460,243"/>
+<area shape="rect" id="node7" href="$dc/d43/classorg_1_1cobbzilla_1_1util_1_1daemon_1_1SimpleDaemon_a5b44b2701469c705d627c28fdb317d56.html#a5b44b2701469c705d627c28fdb317d56" title="org.cobbzilla.util.daemon.\lSimpleDaemon.wait" alt="" coords="289,267,460,308"/>
+<area shape="rect" id="node4" href="$dc/d43/classorg_1_1cobbzilla_1_1util_1_1daemon_1_1SimpleDaemon_a5132f60b2e0d247163db8246be0178d1.html#a5132f60b2e0d247163db8246be0178d1" title="org.cobbzilla.util.daemon.\lSimpleDaemon.alreadyStopped" alt="" coords="509,136,715,177"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="org.cobbzilla.util.http.URIUtil.getHost" name="org.cobbzilla.util.http.URIUtil.getHost">
+<area shape="rect" id="node2" href="$de/d2a/classorg_1_1cobbzilla_1_1util_1_1http_1_1URIUtil_a536464ea16638a4870f1620f15dda387.html#a536464ea16638a4870f1620f15dda387" title="getRegisteredDomain(&quot;foo.bar.baz&quot;) == &quot;bar.baz&quot; " alt="" coords="200,5,396,47"/>
+<area shape="rect" id="node3" href="$de/d2a/classorg_1_1cobbzilla_1_1util_1_1http_1_1URIUtil_a214591e2a20bcc6549f3d8c8b3c26d0e.html#a214591e2a20bcc6549f3d8c8b3c26d0e" title="getTLD(&quot;foo.bar.baz&quot;) == &quot;baz&quot; " alt="" coords="225,71,371,112"/>
+<area shape="rect" id="node4" href="$d9/d6b/classorg_1_1cobbzilla_1_1util_1_1http_1_1HttpUtil_a96da447913f0bdfe5915e584a576ebe6.html#a96da447913f0bdfe5915e584a576ebe6" title="org.cobbzilla.util.http.\lHttpUtil.isOk" alt="" coords="225,160,371,201"/>
+</map>

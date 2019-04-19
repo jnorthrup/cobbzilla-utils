@@ -1,0 +1,4 @@
+<map id="org.cobbzilla.util.time.TimePeriodType" name="org.cobbzilla.util.time.TimePeriodType">
+<area shape="rect" id="node2" href="$db/d45/enumorg_1_1cobbzilla_1_1util_1_1time_1_1TimeRelativeType.html" title="{org.cobbzilla.util.time.\lTimeRelativeType\n|+ past\l+ present\l|+ fromString()\l}" alt="" coords="5,42,155,149"/>
+<area shape="rect" id="node3" href="$db/d7f/interfaceorg_1_1cobbzilla_1_1util_1_1time_1_1TimeSpecifier.html" title="{org.cobbzilla.util.time.\lTimeSpecifier\n||+ get()\l+ nowSpecifier()\l+ todaySpecifier()\l+ pastDaySpecifier()\l+ yesterdaySpecifier()\l+ futureDaySpecifier()\l+ tomorrowSpecifier()\l}" alt="" coords="179,5,330,185"/>
+</map>

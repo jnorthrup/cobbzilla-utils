@@ -1,0 +1,8 @@
+<map id="org.cobbzilla.util.reflect.ReflectionUtil.copy" name="org.cobbzilla.util.reflect.ReflectionUtil.copy">
+<area shape="rect" id="node2" href="$de/d45/classorg_1_1cobbzilla_1_1util_1_1reflect_1_1ReflectionUtil_aab9896ebc9230b8092154769e41c5e00.html#aab9896ebc9230b8092154769e41c5e00" title="Copies fields from src to dest. " alt="" coords="223,5,383,47"/>
+<area shape="rect" id="node3" href="$d2/dd1/classorg_1_1cobbzilla_1_1util_1_1collection_1_1ListUtil_af5013777d90a96ef3b38c1fcde606677.html#af5013777d90a96ef3b38c1fcde606677" title="org.cobbzilla.util.collection.\lListUtil.deepCopy" alt="" coords="213,71,392,112"/>
+<area shape="rect" id="node4" href="$de/d45/classorg_1_1cobbzilla_1_1util_1_1reflect_1_1ReflectionUtil_a06a1f9ddda88967bb1513aaedea72c04.html#a06a1f9ddda88967bb1513aaedea72c04" title="Mirror the object. " alt="" coords="223,136,383,177"/>
+<area shape="rect" id="node5" href="$de/d45/classorg_1_1cobbzilla_1_1util_1_1reflect_1_1ReflectionUtil_a87863b6335a62cb9eaa28caf4af7c7bc.html#a87863b6335a62cb9eaa28caf4af7c7bc" title="org.cobbzilla.util.reflect.\lReflectionUtil.toMap" alt="" coords="223,201,383,243"/>
+<area shape="rect" id="node6" href="$d5/dc2/classorg_1_1cobbzilla_1_1util_1_1io_1_1JarTrimmer_af3d4171c0e315e009d3436a293f5d9b1.html#af3d4171c0e315e009d3436a293f5d9b1" title="org.cobbzilla.util.io.Jar\lTrimmer.trim" alt="" coords="227,267,379,308"/>
+<area shape="rect" id="node7" href="$d1/dcf/classorg_1_1cobbzilla_1_1util_1_1io_1_1main_1_1JarTrimmerMain_a0d79049130f7976bee1c1f8eb13c1538.html#a0d79049130f7976bee1c1f8eb13c1538" title="org.cobbzilla.util.io.main.\lJarTrimmerMain.run" alt="" coords="440,267,607,308"/>
+</map>

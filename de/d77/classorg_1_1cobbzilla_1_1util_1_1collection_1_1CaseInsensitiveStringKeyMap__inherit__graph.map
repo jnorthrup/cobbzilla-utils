@@ -1,0 +1,4 @@
+<map id="org.cobbzilla.util.collection.CaseInsensitiveStringKeyMap&lt; V &gt;" name="org.cobbzilla.util.collection.CaseInsensitiveStringKeyMap&lt; V &gt;">
+<area shape="rect" id="node3" href="$da/d50/classorg_1_1cobbzilla_1_1util_1_1http_1_1CookieJar.html" title="{org::cobbzilla::util\l::http::CookieJar\&lt; HttpCookie\lBean \&gt;\n||+ CookieJar()\l+ CookieJar()\l+ add()\l+ getRequestValue()\l+ getCookiesList()\l+ addCookie()\l+ getCookies()\l+ clearExpired()\l}" alt="" coords="5,470,203,679"/>
+<area shape="rect" id="node4" href="$d4/d12/classorg_1_1cobbzilla_1_1util_1_1collection_1_1CaseInsensitiveStringKeyMap.html" title="{org.cobbzilla.util.collection.\lCaseInsensitiveStringKeyMap\l\&lt; HttpCookieBean \&gt;\n|&#45; origKeys\l|+ key()\l+ keySet()\l+ keys()\l+ get()\l+ containsKey()\l+ put()\l+ putIfAbsent()\l+ remove()\l+ remove()\l+ replace()\l+ replace()\l}" alt="" coords="227,448,426,701"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="org.cobbzilla.util.collection.multi.MultiResultDriverBase" name="org.cobbzilla.util.collection.multi.MultiResultDriverBase">
+<area shape="rect" id="node2" href="$d2/de1/interfaceorg_1_1cobbzilla_1_1util_1_1collection_1_1multi_1_1MultiResultDriver.html" title="{org.cobbzilla.util.collection.multi.\lMultiResultDriver\n||+ getResult()\l+ before()\l+ exec()\l+ success()\l+ failure()\l+ after()\l+ getContext()\l+ setContext()\l+ getMaxConcurrent()\l+ getTimeout()\l}" alt="" coords="5,285,216,509"/>
+<area shape="rect" id="node3" href="$de/d50/classorg_1_1cobbzilla_1_1util_1_1collection_1_1multi_1_1MultiResult.html" title="{org.cobbzilla.util.collection.multi.\lMultiResult\n||+ successCount()\l+ failCount()\l+ success()\l+ fail()\l+ hasFailures()\l+ getHeader()\l+ toString()\l}" alt="" coords="240,307,451,487"/>
+</map>
