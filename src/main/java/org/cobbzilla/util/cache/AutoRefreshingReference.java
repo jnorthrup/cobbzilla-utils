@@ -1,7 +1,5 @@
 package org.cobbzilla.util.cache;
 
-import lombok.Getter;
-
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -9,8 +7,8 @@ import static org.cobbzilla.util.daemon.ZillaRuntime.now;
 
 public abstract class AutoRefreshingReference<T> {
 
-    @Getter private final AtomicReference<T> object = new AtomicReference<>();
-    @Getter private final AtomicLong lastSet = new AtomicLong();
+    private final AtomicReference<T> object = new AtomicReference<>();
+    private final AtomicLong lastSet = new AtomicLong();
 
     public abstract T refresh();
     public abstract long getTimeout();
@@ -40,4 +38,11 @@ public abstract class AutoRefreshingReference<T> {
         }
     }
 
+    public AtomicReference<T> getObject() {
+        return this.object;
+    }
+
+    public AtomicLong getLastSet() {
+        return this.lastSet;
+    }
 }

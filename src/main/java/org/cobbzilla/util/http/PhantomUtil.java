@@ -1,16 +1,17 @@
 package org.cobbzilla.util.http;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.slf4j.Logger;
 
 import java.io.File;
 
 import static org.cobbzilla.util.io.FileUtil.abs;
 
-@Slf4j
 public class PhantomUtil {
+
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(PhantomUtil.class);
 
     static { WebDriverManager.phantomjs().setup(); }
 

@@ -1,11 +1,11 @@
 package org.cobbzilla.util.system;
 
 import lombok.Cleanup;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.exec.*;
 import org.apache.commons.io.output.TeeOutputStream;
 import org.cobbzilla.util.collection.MapBuilder;
 import org.cobbzilla.util.io.FileUtil;
+import org.slf4j.Logger;
 
 import java.io.*;
 import java.util.*;
@@ -17,7 +17,6 @@ import static org.cobbzilla.util.io.FileUtil.getDefaultTempDir;
 import static org.cobbzilla.util.string.StringUtil.ellipsis;
 import static org.cobbzilla.util.string.StringUtil.trimQuotes;
 
-@Slf4j
 public class CommandShell {
 
     protected static final String EXPORT_PREFIX = "export ";
@@ -27,6 +26,7 @@ public class CommandShell {
     public static final String CHOWN = "chown";
 
     private static final int[] DEFAULT_EXIT_VALUES = {0};
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(CommandShell.class);
 
     public static Map<String, String> loadShellExports (String userFile) throws IOException {
         final File file = userFile(userFile);

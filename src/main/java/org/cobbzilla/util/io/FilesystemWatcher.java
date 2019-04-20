@@ -1,10 +1,8 @@
 package org.cobbzilla.util.io;
 
 import lombok.Cleanup;
-import lombok.Getter;
-import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 import org.cobbzilla.util.system.Sleep;
+import org.slf4j.Logger;
 
 import java.io.Closeable;
 import java.io.File;
@@ -17,14 +15,14 @@ import static org.cobbzilla.util.daemon.ZillaRuntime.die;
 import static org.cobbzilla.util.daemon.ZillaRuntime.terminate;
 import static org.cobbzilla.util.io.FileUtil.abs;
 
-@Slf4j @ToString(of={"path", "done"})
 public class FilesystemWatcher implements Runnable, Closeable {
 
     public static final long STOP_TIMEOUT = TimeUnit.SECONDS.toMillis(5);
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(FilesystemWatcher.class);
 
     private final Thread thread = new Thread(this);
     private final AtomicBoolean done = new AtomicBoolean(false);
-    @Getter private final Path path;
+    private final Path path;
 
     public FilesystemWatcher(File path) { this.path = path.toPath(); }
     public FilesystemWatcher(Path path) { this.path = path; }
@@ -153,4 +151,11 @@ public class FilesystemWatcher implements Runnable, Closeable {
         }
     }
 
+    public java.lang.String toString() {
+        return "FilesystemWatcher(done=" + this.done + ", path=" + this.path + ")";
+    }
+
+    public Path getPath() {
+        return this.path;
+    }
 }

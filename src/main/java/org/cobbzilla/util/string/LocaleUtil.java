@@ -1,14 +1,15 @@
 package org.cobbzilla.util.string;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 
 import java.io.File;
 import java.util.Locale;
 
 import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
 
-@Slf4j
 public class LocaleUtil {
+
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(LocaleUtil.class);
 
     public static File findLocaleFile (File base, String locale) {
 

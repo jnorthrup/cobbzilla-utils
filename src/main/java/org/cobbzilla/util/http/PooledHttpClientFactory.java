@@ -1,7 +1,5 @@
 package org.cobbzilla.util.http;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.apache.http.HttpHost;
 import org.apache.http.conn.routing.HttpRoute;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -11,11 +9,16 @@ import org.cobbzilla.util.reflect.ObjectFactory;
 
 import java.util.Map;
 
-@AllArgsConstructor
 public class PooledHttpClientFactory implements ObjectFactory<CloseableHttpClient> {
 
-    @Getter private String host;
-    @Getter private int maxConnections;
+    private String host;
+    private int maxConnections;
+
+    @java.beans.ConstructorProperties({"host", "maxConnections"})
+    public PooledHttpClientFactory(String host, int maxConnections) {
+        this.host = host;
+        this.maxConnections = maxConnections;
+    }
 
     @Override public CloseableHttpClient create() {
         final PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
@@ -29,4 +32,11 @@ public class PooledHttpClientFactory implements ObjectFactory<CloseableHttpClien
 
     @Override public CloseableHttpClient create(Map<String, Object> ctx) { return create(); }
 
+    public String getHost() {
+        return this.host;
+    }
+
+    public int getMaxConnections() {
+        return this.maxConnections;
+    }
 }

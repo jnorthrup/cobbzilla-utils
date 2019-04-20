@@ -1,9 +1,8 @@
 package org.cobbzilla.util.time;
 
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import org.cobbzilla.util.io.StreamUtil;
 import org.cobbzilla.util.string.StringUtil;
+import org.slf4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,15 +12,15 @@ import java.util.*;
 
 import static org.cobbzilla.util.daemon.ZillaRuntime.die;
 
-@Slf4j
 public class ImprovedTimezone {
 
-    @Getter private int id;
-    @Getter private String gmtOffset;
-    @Getter private String displayName;
-    @Getter private String linuxName;
-    @Getter private TimeZone timezone;
-    @Getter private String displayNameWithOffset;
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(ImprovedTimezone.class);
+    private int id;
+    private String gmtOffset;
+    private String displayName;
+    private String linuxName;
+    private TimeZone timezone;
+    private String displayNameWithOffset;
 
     private static List<ImprovedTimezone> TIMEZONES = null;
     private static Map<Integer, ImprovedTimezone> TIMEZONES_BY_ID = new HashMap<>();
@@ -159,4 +158,27 @@ public class ImprovedTimezone {
         return tz.getRawOffset() == 0;
     }
 
+    public int getId() {
+        return this.id;
+    }
+
+    public String getGmtOffset() {
+        return this.gmtOffset;
+    }
+
+    public String getDisplayName() {
+        return this.displayName;
+    }
+
+    public String getLinuxName() {
+        return this.linuxName;
+    }
+
+    public TimeZone getTimezone() {
+        return this.timezone;
+    }
+
+    public String getDisplayNameWithOffset() {
+        return this.displayNameWithOffset;
+    }
 }

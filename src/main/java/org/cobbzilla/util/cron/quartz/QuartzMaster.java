@@ -1,7 +1,5 @@
 package org.cobbzilla.util.cron.quartz;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.cobbzilla.util.cron.CronCommand;
 import org.cobbzilla.util.cron.CronDaemon;
 import org.cobbzilla.util.cron.CronJob;
@@ -23,9 +21,9 @@ public class QuartzMaster implements CronDaemon {
     private static final String TRIGGER_SUFFIX = "_trigger";
 
     private Scheduler scheduler;
-    @Getter @Setter private TimeZone timeZone;
+    private TimeZone timeZone;
 
-    @Getter @Setter private List<? extends CronJob> jobs;
+    private List<? extends CronJob> jobs;
 
     public void start () throws Exception {
         scheduler = StdSchedulerFactory.getDefaultScheduler();
@@ -71,4 +69,19 @@ public class QuartzMaster implements CronDaemon {
 
     public void stop () throws Exception { scheduler.shutdown(); }
 
+    public TimeZone getTimeZone() {
+        return this.timeZone;
+    }
+
+    public List<? extends CronJob> getJobs() {
+        return this.jobs;
+    }
+
+    public void setTimeZone(TimeZone timeZone) {
+        this.timeZone = timeZone;
+    }
+
+    public void setJobs(List<? extends CronJob> jobs) {
+        this.jobs = jobs;
+    }
 }

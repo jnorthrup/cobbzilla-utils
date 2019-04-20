@@ -1,17 +1,16 @@
 package org.cobbzilla.util.time;
 
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTimeZone;
+import org.slf4j.Logger;
 
 import static org.cobbzilla.util.io.StreamUtil.stream2string;
 
-@Slf4j
 public class DefaultTimezone {
 
     public static final String DEFAULT_TIMEZONE = "US/Eastern";
 
-    @Getter(lazy=true) private static final DateTimeZone zone = initTimeZone();
+    private static final DateTimeZone zone = initTimeZone();
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(DefaultTimezone.class);
 
     private static DateTimeZone initTimeZone() {
         // first line that does not start with '#' within 'timezone.txt' resource file will be used
@@ -27,4 +26,7 @@ public class DefaultTimezone {
         }
     }
 
+    public static DateTimeZone getZone() {
+        return DefaultTimezone.zone;
+    }
 }

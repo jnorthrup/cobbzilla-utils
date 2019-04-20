@@ -1,9 +1,10 @@
 package org.cobbzilla.util.system;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 
-@Slf4j
 public class Sleep {
+
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(Sleep.class);
 
     /**
      * sleep for 100ms and throw an exception if interrupted

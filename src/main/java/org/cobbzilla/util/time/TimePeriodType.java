@@ -1,20 +1,15 @@
 package org.cobbzilla.util.time;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 
 import java.util.Arrays;
 
 import static org.cobbzilla.util.daemon.ZillaRuntime.now;
-import static org.cobbzilla.util.time.TimeRelativeType.future;
-import static org.cobbzilla.util.time.TimeRelativeType.past;
-import static org.cobbzilla.util.time.TimeRelativeType.present;
+import static org.cobbzilla.util.time.TimeRelativeType.*;
 import static org.cobbzilla.util.time.TimeSpecifier.*;
 import static org.cobbzilla.util.time.TimeUtil.*;
 
-@Slf4j @AllArgsConstructor
 public enum TimePeriodType {
 
     today            (present, todaySpecifier(),            tomorrowSpecifier()),
@@ -29,9 +24,17 @@ public enum TimePeriodType {
     previous_quarter (past,    t -> lastQuarterMillis(),    t -> startOfQuarterMillis()),
     previous_year    (past,    t -> lastYearMillis(),       t -> startOfYearMillis());
 
-    @Getter private TimeRelativeType type;
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(TimePeriodType.class);
+    private TimeRelativeType type;
     private TimeSpecifier startSpecifier;
     private TimeSpecifier endSpecifier;
+
+    @java.beans.ConstructorProperties({"type", "startSpecifier", "endSpecifier"})
+    private TimePeriodType(TimeRelativeType type, TimeSpecifier startSpecifier, TimeSpecifier endSpecifier) {
+        this.type = type;
+        this.startSpecifier = startSpecifier;
+        this.endSpecifier = endSpecifier;
+    }
 
     @JsonCreator public static TimePeriodType fromString (String val) {
         try {
@@ -42,16 +45,27 @@ public enum TimePeriodType {
         }
     }
 
-    @Getter private static TimePeriodType[] pastTypes = {
+    private static TimePeriodType[] pastTypes = {
             today, week_to_date, month_to_date, quarter_to_date, year_to_date,
             yesterday, previous_week, previous_month, previous_quarter, previous_year
     };
 
-    @Getter private static TimePeriodType[] futureTypes = {
+    private static TimePeriodType[] futureTypes = {
             today, tomorrow
     };
+
+    public static TimePeriodType[] getPastTypes() {
+        return TimePeriodType.pastTypes;
+    }
+
+    public static TimePeriodType[] getFutureTypes() {
+        return TimePeriodType.futureTypes;
+    }
 
     public long start() { return startSpecifier.get(now()); }
     public long end  () { return endSpecifier.get(now()); }
 
+    public TimeRelativeType getType() {
+        return this.type;
+    }
 }

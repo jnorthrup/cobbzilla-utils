@@ -1,7 +1,6 @@
 package org.cobbzilla.util.daemon;
 
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
@@ -14,11 +13,11 @@ import static org.cobbzilla.util.daemon.ZillaRuntime.now;
 import static org.cobbzilla.util.system.Sleep.nap;
 import static org.cobbzilla.util.time.TimeUtil.formatDuration;
 
-@AllArgsConstructor @Slf4j
 public class BufferedRunDaemon implements Runnable {
 
     public static final long IDLE_SYNC_INTERVAL = HOURS.toMillis(1);
     public static final long MIN_SYNC_WAIT      = SECONDS.toMillis(10);
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(BufferedRunDaemon.class);
 
     private final String logPrefix;
     private final Runnable action;
@@ -28,6 +27,12 @@ public class BufferedRunDaemon implements Runnable {
     private final AtomicLong lastRunRequested = new AtomicLong(0);
 
     private final AtomicBoolean done = new AtomicBoolean(false);
+
+    @java.beans.ConstructorProperties({"logPrefix", "action"})
+    public BufferedRunDaemon(String logPrefix, Runnable action) {
+        this.logPrefix = logPrefix;
+        this.action = action;
+    }
 
     protected long getIdleSyncInterval() { return IDLE_SYNC_INTERVAL; }
     protected long getMinSyncWait     () { return MIN_SYNC_WAIT; }

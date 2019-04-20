@@ -2,8 +2,8 @@ package org.cobbzilla.util.io.main;
 
 import org.cobbzilla.util.main.BaseMain;
 
-import static org.cobbzilla.util.io.FileUtil.abs;
 import static org.cobbzilla.util.io.Decompressors.unroll;
+import static org.cobbzilla.util.io.FileUtil.abs;
 
 public class UnrollMain extends BaseMain<UnrollOptions> {
 

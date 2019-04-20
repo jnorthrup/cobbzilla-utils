@@ -1,14 +1,19 @@
 package org.cobbzilla.util.io;
 
-import lombok.Delegate;
-import lombok.Getter;
-
 import java.io.IOException;
 import java.io.InputStream;
 
 public class ByteLimitedInputStream extends InputStream {
 
-    @Delegate(excludes=BLISDelegateExcludes.class) private InputStream delegate;
+    private InputStream delegate;
+
+    public long getCount() {
+        return this.count;
+    }
+
+    public long getLimit() {
+        return this.limit;
+    }
 
     private interface BLISDelegateExcludes {
         int read(byte[] b) throws IOException;
@@ -16,8 +21,8 @@ public class ByteLimitedInputStream extends InputStream {
         int read() throws IOException;
     }
 
-    @Getter private long count = 0;
-    @Getter private long limit;
+    private long count = 0;
+    private long limit;
 
     public double getPercentDone () { return ((double) count) / ((double) limit); }
 

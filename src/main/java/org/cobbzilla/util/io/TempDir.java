@@ -1,12 +1,8 @@
 package org.cobbzilla.util.io;
 
 import com.google.common.io.Files;
-import lombok.AllArgsConstructor;
-import lombok.Delegate;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
 import java.io.Closeable;
 import java.io.File;
@@ -23,19 +19,42 @@ import static org.cobbzilla.util.system.Sleep.sleep;
 /**
  * A directory that implements Closeable. Use lombok @Cleanup to nuke it when it goes out of scope.
  */
-@Slf4j
 public class TempDir extends File implements Closeable {
 
-    @AllArgsConstructor
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(TempDir.class);
+
     private static class FileKillOrder implements Comparable<FileKillOrder> {
-        @Getter @Setter private File file;
-        @Getter @Setter private long killTime;
+        private File file;
+        private long killTime;
+
+        @java.beans.ConstructorProperties({"file", "killTime"})
+        public FileKillOrder(File file, long killTime) {
+            this.file = file;
+            this.killTime = killTime;
+        }
+
         @Override public int compareTo(FileKillOrder k) {
             if (killTime > k.getKillTime()) return 1;
             if (killTime == k.getKillTime()) return 0;
             return -1;
         }
         public boolean shouldKill() { return now() > killTime; }
+
+        public File getFile() {
+            return this.file;
+        }
+
+        public long getKillTime() {
+            return this.killTime;
+        }
+
+        public void setFile(File file) {
+            this.file = file;
+        }
+
+        public void setKillTime(long killTime) {
+            this.killTime = killTime;
+        }
     }
 
     private static class QuickTempReaper implements Runnable {
@@ -87,7 +106,6 @@ public class TempDir extends File implements Closeable {
 
     private interface TempDirOverrides { boolean delete(); }
 
-    @Delegate(excludes=TempDirOverrides.class)
     private File file;
 
     public TempDir () {

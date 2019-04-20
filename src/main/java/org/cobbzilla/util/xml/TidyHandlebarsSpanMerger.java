@@ -1,7 +1,7 @@
 package org.cobbzilla.util.xml;
 
-import lombok.extern.slf4j.Slf4j;
 import org.cobbzilla.util.collection.mappy.MappyList;
+import org.slf4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -12,10 +12,10 @@ import java.util.Map;
 import static org.cobbzilla.util.handlebars.HandlebarsUtil.HB_END;
 import static org.cobbzilla.util.handlebars.HandlebarsUtil.HB_START;
 
-@Slf4j
 public class TidyHandlebarsSpanMerger implements TidyHelper {
 
     public static final TidyHandlebarsSpanMerger instance = new TidyHandlebarsSpanMerger();
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(TidyHandlebarsSpanMerger.class);
 
     @Override public void process(Document doc) {
         final MappyList<Node, Node> toRemove = new MappyList<>();

@@ -1,11 +1,8 @@
 package org.cobbzilla.util.xml;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.xpath.XPathAPI;
 import org.apache.xpath.objects.XObject;
+import org.slf4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.Text;
@@ -25,13 +22,13 @@ import java.util.*;
 
 import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
 
-@Slf4j @NoArgsConstructor
 public class XPathUtil {
 
     public static final String DOC_ROOT_XPATH = "/";
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(XPathUtil.class);
 
-    @Getter @Setter private Collection<String> pathExpressions;
-    @Getter @Setter private boolean useTidy = true;
+    private Collection<String> pathExpressions;
+    private boolean useTidy = true;
 
     public XPathUtil (String expr) { this(new String[] { expr }, true); }
     public XPathUtil (String expr, boolean useTidy) { this(new String[] { expr }, useTidy); }
@@ -44,6 +41,9 @@ public class XPathUtil {
     public XPathUtil(Collection<String> exprs, boolean useTidy) {
         this.pathExpressions = exprs;
         this.useTidy = useTidy;
+    }
+
+    public XPathUtil() {
     }
 
     public List<Node> getFirstMatchList(InputStream in) throws ParserConfigurationException, IOException, SAXException, TransformerException {
@@ -163,5 +163,21 @@ public class XPathUtil {
         if (n == null) return false;
         short nodeType = n.getNodeType();
         return nodeType == Node.CDATA_SECTION_NODE || nodeType == Node.TEXT_NODE;
+    }
+
+    public Collection<String> getPathExpressions() {
+        return this.pathExpressions;
+    }
+
+    public boolean isUseTidy() {
+        return this.useTidy;
+    }
+
+    public void setPathExpressions(Collection<String> pathExpressions) {
+        this.pathExpressions = pathExpressions;
+    }
+
+    public void setUseTidy(boolean useTidy) {
+        this.useTidy = useTidy;
     }
 }

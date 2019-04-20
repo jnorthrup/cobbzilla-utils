@@ -1,7 +1,6 @@
 package org.cobbzilla.util.math;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import lombok.Getter;
 
 public enum Cardinal {
 
@@ -10,8 +9,8 @@ public enum Cardinal {
     south (-1, "S", "south"),
     west (-1, "W", "west");
 
-    @Getter private final int direction;
-    @Getter private final String[] allAliases;
+    private final int direction;
+    private final String[] allAliases;
 
     Cardinal(int direction, String... allAliases) {
         this.direction = direction;
@@ -35,5 +34,13 @@ public enum Cardinal {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public int getDirection() {
+        return this.direction;
+    }
+
+    public String[] getAllAliases() {
+        return this.allAliases;
     }
 }

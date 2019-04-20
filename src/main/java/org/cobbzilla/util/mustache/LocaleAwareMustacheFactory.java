@@ -11,6 +11,7 @@ import com.google.common.util.concurrent.UncheckedExecutionException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ import static org.cobbzilla.util.string.StringUtil.DEFAULT_LOCALE;
 public class LocaleAwareMustacheFactory extends DefaultMustacheFactory {
 
     public static final String TEMPLATE_SUFFIX = ".mustache";
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(LocaleAwareMustacheFactory.class);
 
     @Getter @Setter private static boolean skipClasspath = false;
 
@@ -80,6 +82,14 @@ public class LocaleAwareMustacheFactory extends DefaultMustacheFactory {
             suffixChecks.add(0, suffix.toString());
         }
         suffixChecks.add(""); // default template
+    }
+
+    public static boolean isSkipClasspath() {
+        return LocaleAwareMustacheFactory.skipClasspath;
+    }
+
+    public static void setSkipClasspath(boolean skipClasspath) {
+        LocaleAwareMustacheFactory.skipClasspath = skipClasspath;
     }
 
     private class LAMFCacheLoader extends CacheLoader<String, Mustache> {

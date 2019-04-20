@@ -1,13 +1,15 @@
 package org.cobbzilla.util.jdbc;
 
-import lombok.AllArgsConstructor;
-
 import java.sql.SQLException;
 
-@AllArgsConstructor
 public class UncheckedSqlException extends RuntimeException {
 
     private final SQLException sqlException;
+
+    @java.beans.ConstructorProperties({"sqlException"})
+    public UncheckedSqlException(SQLException sqlException) {
+        this.sqlException = sqlException;
+    }
 
     @Override public String getMessage() { return sqlException.getMessage(); }
 

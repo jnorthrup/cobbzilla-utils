@@ -1,7 +1,7 @@
 package org.cobbzilla.util.daemon;
 
-import lombok.extern.slf4j.Slf4j;
 import org.cobbzilla.util.time.ClockProvider;
+import org.slf4j.Logger;
 
 import java.util.*;
 import java.util.concurrent.ExecutionException;
@@ -13,11 +13,11 @@ import static org.cobbzilla.util.daemon.ZillaRuntime.die;
 import static org.cobbzilla.util.daemon.ZillaRuntime.now;
 import static org.cobbzilla.util.system.Sleep.sleep;
 
-@Slf4j
 public class Await {
 
     public static final long DEFAULT_AWAIT_GET_SLEEP = 10;
     public static final long DEFAULT_AWAIT_RETRY_SLEEP = 100;
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(Await.class);
 
     public static <E> E awaitFirst(Collection<Future<E>> futures, long timeout) throws TimeoutException {
         return awaitFirst(futures, timeout, DEFAULT_AWAIT_RETRY_SLEEP);

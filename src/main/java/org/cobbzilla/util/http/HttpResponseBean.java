@@ -1,16 +1,13 @@
 package org.cobbzilla.util.http;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import lombok.experimental.Accessors;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpHeaders;
 import org.cobbzilla.util.collection.NameAndValue;
 import org.cobbzilla.util.json.JsonUtil;
+import org.slf4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,16 +19,18 @@ import static org.cobbzilla.util.daemon.ZillaRuntime.die;
 import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
 import static org.cobbzilla.util.string.StringUtil.UTF8cs;
 
-@Slf4j @Accessors(chain=true) @ToString(of={"status", "headers"})
+@Accessors(chain=true)
 public class HttpResponseBean {
 
     public static final HttpResponseBean OK = new HttpResponseBean().setStatus(HttpStatusCodes.OK);
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(HttpResponseBean.class);
 
-    @Getter @Setter private int status;
-    @Getter @Setter private List<NameAndValue> headers;
-    @JsonIgnore @Getter private byte[] entity;
-    @Getter @Setter private long contentLength;
-    @Getter @Setter private String contentType;
+    private int status;
+    private List<NameAndValue> headers;
+    @JsonIgnore
+    private byte[] entity;
+    private long contentLength;
+    private String contentType;
 
     @JsonIgnore public boolean isOk() { return (status / 100) == 2; }
 
@@ -109,6 +108,50 @@ public class HttpResponseBean {
                 }
             }
         }
+        return this;
+    }
+
+    public java.lang.String toString() {
+        return "HttpResponseBean(status=" + this.status + ", headers=" + this.headers + ")";
+    }
+
+    public int getStatus() {
+        return this.status;
+    }
+
+    public List<NameAndValue> getHeaders() {
+        return this.headers;
+    }
+
+    public byte[] getEntity() {
+        return this.entity;
+    }
+
+    public long getContentLength() {
+        return this.contentLength;
+    }
+
+    public String getContentType() {
+        return this.contentType;
+    }
+
+    public HttpResponseBean setStatus(int status) {
+        this.status = status;
+        return this;
+    }
+
+    public HttpResponseBean setHeaders(List<NameAndValue> headers) {
+        this.headers = headers;
+        return this;
+    }
+
+    public HttpResponseBean setContentLength(long contentLength) {
+        this.contentLength = contentLength;
+        return this;
+    }
+
+    public HttpResponseBean setContentType(String contentType) {
+        this.contentType = contentType;
         return this;
     }
 }

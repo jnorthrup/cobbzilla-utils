@@ -1,21 +1,19 @@
 package org.cobbzilla.util.cron;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.cobbzilla.util.reflect.ReflectionUtil;
 
 import java.util.Properties;
 
 public class CronJob {
 
-    @Getter @Setter private String id;
+    private String id;
 
-    @Getter @Setter private String cronTimeString;
+    private String cronTimeString;
 
-    @Getter @Setter private boolean startNow = false;
+    private boolean startNow = false;
 
-    @Getter @Setter private String commandClass;
-    @Getter @Setter private Properties properties = new Properties();
+    private String commandClass;
+    private Properties properties = new Properties();
 
     // todo
 //    @Getter @Setter private String user;
@@ -25,5 +23,45 @@ public class CronJob {
         CronCommand command = ReflectionUtil.instantiate(commandClass);
         command.init(properties);
         return command;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public String getCronTimeString() {
+        return this.cronTimeString;
+    }
+
+    public boolean isStartNow() {
+        return this.startNow;
+    }
+
+    public String getCommandClass() {
+        return this.commandClass;
+    }
+
+    public Properties getProperties() {
+        return this.properties;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setCronTimeString(String cronTimeString) {
+        this.cronTimeString = cronTimeString;
+    }
+
+    public void setStartNow(boolean startNow) {
+        this.startNow = startNow;
+    }
+
+    public void setCommandClass(String commandClass) {
+        this.commandClass = commandClass;
+    }
+
+    public void setProperties(Properties properties) {
+        this.properties = properties;
     }
 }

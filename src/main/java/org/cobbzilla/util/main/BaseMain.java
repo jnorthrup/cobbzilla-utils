@@ -1,29 +1,27 @@
 package org.cobbzilla.util.main;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import org.cobbzilla.util.daemon.ZillaRuntime;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
+import org.slf4j.Logger;
 
 import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
 import static org.cobbzilla.util.reflect.ReflectionUtil.getFirstTypeParam;
 import static org.cobbzilla.util.reflect.ReflectionUtil.instantiate;
 
-@Slf4j
 public abstract class BaseMain<OPT extends BaseMainOptions> {
 
-    @Getter private final OPT options = initOptions();
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(BaseMain.class);
+    private final OPT options = initOptions();
     protected OPT initOptions() { return instantiate(getFirstTypeParam(getClass())); }
 
-    @Getter(value=AccessLevel.PROTECTED) private final CmdLineParser parser = new CmdLineParser(getOptions());
+    private final CmdLineParser parser = new CmdLineParser(getOptions());
 
     protected abstract void run() throws Exception;
 
     public void runOrDie () { try { run(); } catch (Exception e) { die("runOrDie: "+e, e); } }
 
-    @Getter private String[] args;
+    private String[] args;
     public void setArgs(String[] args) throws CmdLineException {
         this.args = args;
         try {
@@ -104,5 +102,17 @@ public abstract class BaseMain<OPT extends BaseMainOptions> {
         err(message + ": " + e.getClass().getName() + (!empty(e.getMessage()) ? ": "+e.getMessage(): ""));
         System.exit(1);
         return null;
+    }
+
+    public OPT getOptions() {
+        return this.options;
+    }
+
+    protected CmdLineParser getParser() {
+        return this.parser;
+    }
+
+    public String[] getArgs() {
+        return this.args;
     }
 }

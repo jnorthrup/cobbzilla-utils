@@ -1,8 +1,5 @@
 package org.cobbzilla.util.reflect;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -28,10 +25,18 @@ public class PoisonProxy {
         return (T) Proxy.newProxyInstance(clazzes[0].getClassLoader(), clazzes, thrower == null ? PoisonedInvocationHandler.instance : new PoisonedInvocationHandler(thrower));
     }
 
-    @NoArgsConstructor @AllArgsConstructor
     private static class PoisonedInvocationHandler implements InvocationHandler {
         public static PoisonedInvocationHandler instance = new PoisonedInvocationHandler();
         private PoisonProxyThrow thrower = null;
+
+        @java.beans.ConstructorProperties({"thrower"})
+        public PoisonedInvocationHandler(PoisonProxyThrow thrower) {
+            this.thrower = thrower;
+        }
+
+        public PoisonedInvocationHandler() {
+        }
+
         @Override public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
             if (thrower == null) {
                 return notSupported("method not supported by poisonProxy: " + method.getName() + " (in fact, NO methods will work on this object)");

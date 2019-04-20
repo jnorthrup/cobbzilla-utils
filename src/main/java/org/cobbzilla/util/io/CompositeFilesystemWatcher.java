@@ -1,7 +1,7 @@
 package org.cobbzilla.util.io;
 
-import lombok.extern.slf4j.Slf4j;
 import org.cobbzilla.util.string.StringUtil;
+import org.slf4j.Logger;
 
 import java.io.Closeable;
 import java.io.File;
@@ -15,9 +15,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static org.cobbzilla.util.reflect.ReflectionUtil.getFirstTypeParam;
 
-@Slf4j
 public abstract class CompositeFilesystemWatcher<T extends FilesystemWatcher> implements Closeable {
 
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(CompositeFilesystemWatcher.class);
     private Map<Path, T> watchers = new ConcurrentHashMap<>();
 
     @Override public void close() throws IOException {

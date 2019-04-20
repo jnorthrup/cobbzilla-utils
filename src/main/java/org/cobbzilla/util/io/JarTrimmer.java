@@ -1,10 +1,9 @@
 package org.cobbzilla.util.io;
 
 import lombok.Cleanup;
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.cobbzilla.util.reflect.ReflectionUtil;
+import org.slf4j.Logger;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -18,14 +17,18 @@ import java.util.jar.JarOutputStream;
 import static org.cobbzilla.util.daemon.ZillaRuntime.die;
 import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
 
-@Slf4j
 public class JarTrimmer {
 
     public static final String CLASS_SUFFIX = ".class";
-    @Getter private IncludeCount counter = new IncludeCount("");
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(JarTrimmer.class);
+    private IncludeCount counter = new IncludeCount("");
+
+    public IncludeCount getCounter() {
+        return this.counter;
+    }
 
     public static class IncludeCount {
-        @Getter private int count;
+        private int count;
 
         public int getTotalCount () {
             int total = count;
@@ -33,9 +36,9 @@ public class JarTrimmer {
             return total;
         }
 
-        @Getter private String path;
+        private String path;
 
-        @Getter private Map<String, IncludeCount> subPaths;
+        private Map<String, IncludeCount> subPaths;
 
         public IncludeCount (String path) {
             this.path = path;
@@ -52,6 +55,18 @@ public class JarTrimmer {
             final String part = hasSlash ? path.substring(0, slashPos) : path ;
             final IncludeCount subCount = subPaths.computeIfAbsent(part, v -> new IncludeCount(part));
             return hasSlash ? subCount.getCounter(path.substring(slashPos+1)) : subCount;
+        }
+
+        public int getCount() {
+            return this.count;
+        }
+
+        public String getPath() {
+            return this.path;
+        }
+
+        public Map<String, IncludeCount> getSubPaths() {
+            return this.subPaths;
         }
     }
 

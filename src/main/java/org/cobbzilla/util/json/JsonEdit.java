@@ -5,8 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.ValueNode;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.io.File;
@@ -18,7 +16,6 @@ import java.util.*;
 
 import static org.cobbzilla.util.daemon.ZillaRuntime.die;
 import static org.cobbzilla.util.json.JsonUtil.*;
-import static org.cobbzilla.util.json.JsonUtil.FULL_MAPPER_ALLOW_COMMENTS;
 
 /**
  * Facilitates editing JSON files.
@@ -32,8 +29,8 @@ public class JsonEdit {
 
     public static final ObjectMapper JSON = FULL_MAPPER_ALLOW_COMMENTS;
 
-    @Getter @Setter private Object jsonData;
-    @Getter @Setter private List<JsonEditOperation> operations = new ArrayList<>();
+    private Object jsonData;
+    private List<JsonEditOperation> operations = new ArrayList<>();
 
     public JsonEdit addOperation (JsonEditOperation operation) { operations.add(operation); return this; }
 
@@ -226,4 +223,21 @@ public class JsonEdit {
         return root;
     }
 
+    public Object getJsonData() {
+        return this.jsonData;
+    }
+
+    public List<JsonEditOperation> getOperations() {
+        return this.operations;
+    }
+
+    public JsonEdit setJsonData(Object jsonData) {
+        this.jsonData = jsonData;
+        return this;
+    }
+
+    public JsonEdit setOperations(List<JsonEditOperation> operations) {
+        this.operations = operations;
+        return this;
+    }
 }

@@ -1,9 +1,6 @@
 package org.cobbzilla.util.dns;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import lombok.experimental.Accessors;
 import org.cobbzilla.util.string.StringUtil;
 
@@ -14,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
 
-@Accessors(chain=true) @ToString(callSuper=true)
+@Accessors(chain=true)
 public class DnsRecord extends DnsRecordBase {
 
     public static final int DEFAULT_TTL = (int) TimeUnit.HOURS.toSeconds(1);
@@ -33,8 +30,8 @@ public class DnsRecord extends DnsRecordBase {
     public static final String[] NS_REQUIRED_OPTIONS = {OPT_NS_NAME};
     public static final String[] SOA_REQUIRED_OPTIONS = {OPT_SOA_RNAME};
 
-    @Getter @Setter private int ttl = DEFAULT_TTL;
-    @Getter @Setter private Map<String, String> options;
+    private int ttl = DEFAULT_TTL;
+    private Map<String, String> options;
 
     public DnsRecord setOption(String optName, String value) {
         if (options == null) options = new HashMap<>();
@@ -99,4 +96,25 @@ public class DnsRecord extends DnsRecordBase {
         return this;
     }
 
+    public java.lang.String toString() {
+        return "DnsRecord(super=" + super.toString() + ", ttl=" + this.ttl + ", options=" + this.options + ")";
+    }
+
+    public int getTtl() {
+        return this.ttl;
+    }
+
+    public Map<String, String> getOptions() {
+        return this.options;
+    }
+
+    public DnsRecord setTtl(int ttl) {
+        this.ttl = ttl;
+        return this;
+    }
+
+    public DnsRecord setOptions(Map<String, String> options) {
+        this.options = options;
+        return this;
+    }
 }

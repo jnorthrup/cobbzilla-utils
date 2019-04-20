@@ -1,7 +1,5 @@
 package org.cobbzilla.util.chef;
 
-import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.cobbzilla.util.security.ShaUtil;
 
@@ -13,9 +11,9 @@ public class VendorDatabag {
 
     public static final VendorDatabag NULL = new VendorDatabag();
 
-    @Getter @Setter private String service_key_endpoint;
-    @Getter @Setter private String ssl_key_sha;
-    @Getter @Setter private List<VendorDatabagSetting> settings = new ArrayList<>();
+    private String service_key_endpoint;
+    private String ssl_key_sha;
+    private List<VendorDatabagSetting> settings = new ArrayList<>();
 
     public VendorDatabag addSetting (VendorDatabagSetting setting) { settings.add(setting); return this; }
 
@@ -35,5 +33,32 @@ public class VendorDatabag {
         final String shasum = setting.getShasum();
         return shasum != null && ShaUtil.sha256_hex(value).equals(shasum);
 
+    }
+
+    public String getService_key_endpoint() {
+        return this.service_key_endpoint;
+    }
+
+    public String getSsl_key_sha() {
+        return this.ssl_key_sha;
+    }
+
+    public List<VendorDatabagSetting> getSettings() {
+        return this.settings;
+    }
+
+    public VendorDatabag setService_key_endpoint(String service_key_endpoint) {
+        this.service_key_endpoint = service_key_endpoint;
+        return this;
+    }
+
+    public VendorDatabag setSsl_key_sha(String ssl_key_sha) {
+        this.ssl_key_sha = ssl_key_sha;
+        return this;
+    }
+
+    public VendorDatabag setSettings(List<VendorDatabagSetting> settings) {
+        this.settings = settings;
+        return this;
     }
 }

@@ -1,6 +1,5 @@
 package org.cobbzilla.util.xml;
 
-import lombok.Getter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -39,7 +38,10 @@ public class ElementIdGenerator {
         return element;
     }
 
-    @Getter(lazy=true) private final XmlElementFunction idFunction = initIdFunction();
+    private final XmlElementFunction idFunction = initIdFunction();
     private XmlElementFunction initIdFunction() { return this::id; }
 
+    public XmlElementFunction getIdFunction() {
+        return this.idFunction;
+    }
 }

@@ -1,14 +1,17 @@
 package org.cobbzilla.util.mustache;
 
-import lombok.AllArgsConstructor;
-
 import java.io.File;
 
-@AllArgsConstructor
 class LAMFCacheKey {
 
     public File root;
     public String locale;
+
+    @java.beans.ConstructorProperties({"root", "locale"})
+    public LAMFCacheKey(File root, String locale) {
+        this.root = root;
+        this.locale = locale;
+    }
 
     @Override
     public boolean equals(Object o) {

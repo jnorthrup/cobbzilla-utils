@@ -1,26 +1,21 @@
 package org.cobbzilla.util.http;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.Accessors;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.slf4j.Logger;
 
 import java.util.Date;
 import java.util.StringTokenizer;
 
-import static org.cobbzilla.util.daemon.ZillaRuntime.die;
-import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
-import static org.cobbzilla.util.daemon.ZillaRuntime.now;
+import static org.cobbzilla.util.daemon.ZillaRuntime.*;
 import static org.cobbzilla.util.reflect.ReflectionUtil.copy;
 
-@NoArgsConstructor @Accessors(chain=true) @Slf4j
+@Accessors(chain=true)
 public class HttpCookieBean {
 
     public static final DateTimeFormatter[] EXPIRES_PATTERNS = {
@@ -29,17 +24,22 @@ public class HttpCookieBean {
             DateTimeFormat.forPattern("E, dd MMM yyyy HH:mm:ss z"),
             DateTimeFormat.forPattern("E, dd-MMM-yyyy HH:mm:ss z")
     };
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(HttpCookieBean.class);
 
-    @Getter @Setter private String name;
-    @Getter @Setter private String value;
-    @Getter @Setter private String domain;
+    private String name;
+    private String value;
+    private String domain;
+
+    public HttpCookieBean() {
+    }
+
     public boolean hasDomain () { return !empty(domain); }
 
-    @Getter @Setter private String path;
-    @Getter @Setter private String expires;
-    @Getter @Setter private Long maxAge;
-    @Getter @Setter private boolean secure;
-    @Getter @Setter private boolean httpOnly;
+    private String path;
+    private String expires;
+    private Long maxAge;
+    private boolean secure;
+    private boolean httpOnly;
 
     public HttpCookieBean(String name, String value) { this(name, value, null); }
 
@@ -141,5 +141,77 @@ public class HttpCookieBean {
         cookie.setDomain(domain);
         cookie.setSecure(secure);
         return cookie;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getValue() {
+        return this.value;
+    }
+
+    public String getDomain() {
+        return this.domain;
+    }
+
+    public String getPath() {
+        return this.path;
+    }
+
+    public String getExpires() {
+        return this.expires;
+    }
+
+    public Long getMaxAge() {
+        return this.maxAge;
+    }
+
+    public boolean isSecure() {
+        return this.secure;
+    }
+
+    public boolean isHttpOnly() {
+        return this.httpOnly;
+    }
+
+    public HttpCookieBean setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public HttpCookieBean setValue(String value) {
+        this.value = value;
+        return this;
+    }
+
+    public HttpCookieBean setDomain(String domain) {
+        this.domain = domain;
+        return this;
+    }
+
+    public HttpCookieBean setPath(String path) {
+        this.path = path;
+        return this;
+    }
+
+    public HttpCookieBean setExpires(String expires) {
+        this.expires = expires;
+        return this;
+    }
+
+    public HttpCookieBean setMaxAge(Long maxAge) {
+        this.maxAge = maxAge;
+        return this;
+    }
+
+    public HttpCookieBean setSecure(boolean secure) {
+        this.secure = secure;
+        return this;
+    }
+
+    public HttpCookieBean setHttpOnly(boolean httpOnly) {
+        this.httpOnly = httpOnly;
+        return this;
     }
 }

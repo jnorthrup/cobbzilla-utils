@@ -1,9 +1,11 @@
 package org.cobbzilla.util.handlebars;
 
 import com.github.jknack.handlebars.Handlebars;
+import fr.opensagres.poi.xwpf.converter.xhtml.XHTMLConverter;
+import fr.opensagres.poi.xwpf.converter.xhtml.XHTMLOptions;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.xwpf.converter.xhtml.XHTMLConverter;
-import org.apache.poi.xwpf.converter.xhtml.XHTMLOptions;
+//import org.apache.poi.xwpf.converter.xhtml.XHTMLConverter;
+//import org.apache.poi.xwpf.converter.xhtml.XHTMLOptions;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.cobbzilla.util.http.HtmlScreenCapture;
 import org.cobbzilla.util.io.FileUtil;

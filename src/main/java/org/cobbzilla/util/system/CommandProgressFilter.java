@@ -1,8 +1,5 @@
 package org.cobbzilla.util.system;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.apache.tools.ant.util.LineOrientedOutputStream;
 
@@ -14,15 +11,59 @@ import java.util.regex.Pattern;
 @Accessors(chain=true)
 public class CommandProgressFilter extends LineOrientedOutputStream {
 
-    @Getter private int pctDone = 0;
-    @Getter private int indicatorPos = 0;
-    @Getter private boolean closed = false;
-    @Getter @Setter private CommandProgressCallback callback;
+    private int pctDone = 0;
+    private int indicatorPos = 0;
+    private boolean closed = false;
+    private CommandProgressCallback callback;
 
-    @AllArgsConstructor
+    public int getPctDone() {
+        return this.pctDone;
+    }
+
+    public int getIndicatorPos() {
+        return this.indicatorPos;
+    }
+
+    public boolean isClosed() {
+        return this.closed;
+    }
+
+    public CommandProgressCallback getCallback() {
+        return this.callback;
+    }
+
+    public CommandProgressFilter setCallback(CommandProgressCallback callback) {
+        this.callback = callback;
+        return this;
+    }
+
     private class CommandProgressIndicator {
-        @Getter @Setter private int percent;
-        @Getter @Setter private Pattern pattern;
+        private int percent;
+        private Pattern pattern;
+
+        @java.beans.ConstructorProperties({"percent", "pattern"})
+        public CommandProgressIndicator(int percent, Pattern pattern) {
+            this.percent = percent;
+            this.pattern = pattern;
+        }
+
+        public int getPercent() {
+            return this.percent;
+        }
+
+        public Pattern getPattern() {
+            return this.pattern;
+        }
+
+        public CommandProgressIndicator setPercent(int percent) {
+            this.percent = percent;
+            return this;
+        }
+
+        public CommandProgressIndicator setPattern(Pattern pattern) {
+            this.pattern = pattern;
+            return this;
+        }
     }
 
     private List<CommandProgressIndicator> indicators = new ArrayList<>();

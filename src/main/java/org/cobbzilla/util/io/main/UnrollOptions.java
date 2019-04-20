@@ -1,7 +1,5 @@
 package org.cobbzilla.util.io.main;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.cobbzilla.util.main.BaseMainOptions;
 import org.kohsuke.args4j.Option;
 
@@ -13,6 +11,13 @@ public class UnrollOptions extends BaseMainOptions {
     public static final String OPT_FILE = "-f";
     public static final String LONGOPT_FILE= "--file";
     @Option(name=OPT_FILE, aliases=LONGOPT_FILE, usage=USAGE_FILE, required=true)
-    @Getter @Setter private File file;
+    private File file;
 
+    public File getFile() {
+        return this.file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
 }

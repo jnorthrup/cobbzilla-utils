@@ -1,8 +1,6 @@
 package org.cobbzilla.util.io;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.apache.commons.io.FileUtils;
 import org.cobbzilla.util.collection.ArrayUtil;
@@ -18,24 +16,26 @@ import static org.cobbzilla.util.string.StringUtil.UTF8cs;
 @Accessors(chain=true)
 public class JarTrimmerConfig {
 
-    @Getter @Setter private File inJar;
-    @Setter private File outJar;
+    private File inJar;
+    private File outJar;
     public File getOutJar () { return outJar != null ? outJar : inJar; }
 
-    @Getter @Setter private String[] requiredClasses;
-    @JsonIgnore @Getter(lazy=true) private final Set<String> requiredClassSet = new HashSet<>(Arrays.asList(getRequiredClasses()));
+    private String[] requiredClasses;
+    @JsonIgnore
+    private final Set<String> requiredClassSet = new HashSet<>(Arrays.asList(getRequiredClasses()));
 
     public JarTrimmerConfig setRequiredClassesFromFile (File f) throws IOException {
         requiredClasses = FileUtils.readLines(f, UTF8cs).toArray(new String[0]);
         return this;
     }
 
-    @Getter @Setter private String[] requiredPrefixes = new String[] { "META-INF", "WEB-INF" };
+    private String[] requiredPrefixes = new String[] { "META-INF", "WEB-INF" };
     public JarTrimmerConfig requirePrefix(String prefix) { requiredPrefixes = ArrayUtil.append(requiredPrefixes, prefix); return this; }
-    @JsonIgnore @Getter(lazy=true) private final Set<String> requiredPrefixSet = new HashSet<>(Arrays.asList(getRequiredPrefixes()));
+    @JsonIgnore
+    private final Set<String> requiredPrefixSet = new HashSet<>(Arrays.asList(getRequiredPrefixes()));
 
-    @Getter @Setter private boolean includeRootFiles = true;
-    @Getter @Setter private File counterFile = null;
+    private boolean includeRootFiles = true;
+    private File counterFile = null;
     public boolean hasCounterFile () { return counterFile != null; }
 
     public boolean required(String name) {
@@ -51,6 +51,64 @@ public class JarTrimmerConfig {
 
     public JarTrimmerConfig requireClasses(File file) throws IOException {
         requiredClasses = ArrayUtil.append(requiredClasses, FileUtils.readLines(file).toArray(new String[0]));
+        return this;
+    }
+
+    public File getInJar() {
+        return this.inJar;
+    }
+
+    public String[] getRequiredClasses() {
+        return this.requiredClasses;
+    }
+
+    public Set<String> getRequiredClassSet() {
+        return this.requiredClassSet;
+    }
+
+    public String[] getRequiredPrefixes() {
+        return this.requiredPrefixes;
+    }
+
+    public Set<String> getRequiredPrefixSet() {
+        return this.requiredPrefixSet;
+    }
+
+    public boolean isIncludeRootFiles() {
+        return this.includeRootFiles;
+    }
+
+    public File getCounterFile() {
+        return this.counterFile;
+    }
+
+    public JarTrimmerConfig setInJar(File inJar) {
+        this.inJar = inJar;
+        return this;
+    }
+
+    public JarTrimmerConfig setOutJar(File outJar) {
+        this.outJar = outJar;
+        return this;
+    }
+
+    public JarTrimmerConfig setRequiredClasses(String[] requiredClasses) {
+        this.requiredClasses = requiredClasses;
+        return this;
+    }
+
+    public JarTrimmerConfig setRequiredPrefixes(String[] requiredPrefixes) {
+        this.requiredPrefixes = requiredPrefixes;
+        return this;
+    }
+
+    public JarTrimmerConfig setIncludeRootFiles(boolean includeRootFiles) {
+        this.includeRootFiles = includeRootFiles;
+        return this;
+    }
+
+    public JarTrimmerConfig setCounterFile(File counterFile) {
+        this.counterFile = counterFile;
         return this;
     }
 }

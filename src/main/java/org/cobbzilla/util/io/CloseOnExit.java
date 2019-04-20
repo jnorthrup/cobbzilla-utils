@@ -1,14 +1,14 @@
 package org.cobbzilla.util.io;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 
 import java.io.Closeable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 public class CloseOnExit implements Runnable {
 
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(CloseOnExit.class);
     private static List<Closeable> closeables = new ArrayList<>();
 
     private CloseOnExit () {}

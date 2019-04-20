@@ -1,8 +1,5 @@
 package org.cobbzilla.util.system;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.lang3.ArrayUtils;
@@ -20,26 +17,30 @@ import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
 import static org.cobbzilla.util.io.FileUtil.abs;
 import static org.cobbzilla.util.string.StringUtil.UTF8cs;
 
-@NoArgsConstructor @Accessors(chain=true)
+@Accessors(chain=true)
 public class Command {
 
     public static final List<Integer> DEFAULT_EXIT_VALUES = new SingletonList<>(0);
     public static final int[] DEFAULT_EXIT_VALUES_INT = { 0 };
 
-    @Getter @Setter private CommandLine commandLine;
-    @Getter @Setter private String input;
-    @Getter @Setter private byte[] rawInput;
-    @Getter @Setter private InputStream stdin;
-    @Getter @Setter private File dir;
-    @Getter @Setter private Map<String, String> env;
+    private CommandLine commandLine;
+    private String input;
+    private byte[] rawInput;
+    private InputStream stdin;
+    private File dir;
+    private Map<String, String> env;
     private List<Integer> exitValues = DEFAULT_EXIT_VALUES;
 
-    @Getter @Setter private boolean copyToStandard = false;
+    private boolean copyToStandard = false;
 
-    @Getter @Setter private OutputStream out;
+    private OutputStream out;
+
+    public Command() {
+    }
+
     public boolean hasOut () { return out != null; }
 
-    @Getter @Setter private OutputStream err;
+    private OutputStream err;
     public boolean hasErr () { return err != null; }
 
     public Command(CommandLine commandLine) { this.commandLine = commandLine; }
@@ -69,4 +70,84 @@ public class Command {
         return this;
     }
 
+    public CommandLine getCommandLine() {
+        return this.commandLine;
+    }
+
+    public String getInput() {
+        return this.input;
+    }
+
+    public byte[] getRawInput() {
+        return this.rawInput;
+    }
+
+    public InputStream getStdin() {
+        return this.stdin;
+    }
+
+    public File getDir() {
+        return this.dir;
+    }
+
+    public Map<String, String> getEnv() {
+        return this.env;
+    }
+
+    public boolean isCopyToStandard() {
+        return this.copyToStandard;
+    }
+
+    public OutputStream getOut() {
+        return this.out;
+    }
+
+    public OutputStream getErr() {
+        return this.err;
+    }
+
+    public Command setCommandLine(CommandLine commandLine) {
+        this.commandLine = commandLine;
+        return this;
+    }
+
+    public Command setInput(String input) {
+        this.input = input;
+        return this;
+    }
+
+    public Command setRawInput(byte[] rawInput) {
+        this.rawInput = rawInput;
+        return this;
+    }
+
+    public Command setStdin(InputStream stdin) {
+        this.stdin = stdin;
+        return this;
+    }
+
+    public Command setDir(File dir) {
+        this.dir = dir;
+        return this;
+    }
+
+    public Command setEnv(Map<String, String> env) {
+        this.env = env;
+        return this;
+    }
+
+    public Command setCopyToStandard(boolean copyToStandard) {
+        this.copyToStandard = copyToStandard;
+        return this;
+    }
+
+    public Command setOut(OutputStream out) {
+        this.out = out;
+        return this;
+    }
+
+    public Command setErr(OutputStream err) {
+        this.err = err;
+        return this;
+    }
 }

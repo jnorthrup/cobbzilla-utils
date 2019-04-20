@@ -1,8 +1,8 @@
 package org.cobbzilla.util.xml;
 
-import lombok.extern.slf4j.Slf4j;
 import org.cobbzilla.util.io.StreamUtil;
 import org.cobbzilla.util.string.StringUtil;
+import org.slf4j.Logger;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@Slf4j
 public class CommonEntityResolver implements EntityResolver {
 
     private static final String COMMON_DTD_ROOT = StringUtil.getPackagePath(CommonEntityResolver.class);
@@ -21,6 +20,7 @@ public class CommonEntityResolver implements EntityResolver {
             { "-//W3C//ENTITIES Symbols for XHTML//EN", COMMON_DTD_ROOT+"/xhtml-symbol.ent"},
             { "-//W3C//ENTITIES Special for XHTML//EN", COMMON_DTD_ROOT+"/xhtml-special.ent"}
     };
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(CommonEntityResolver.class);
     private static Map<String, String> COMMON_ENTITY_MAP = new HashMap<String, String>();
     static {
         for (String[] entity : COMMON_ENTITIES) {

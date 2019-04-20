@@ -1,8 +1,8 @@
 package org.cobbzilla.util.http;
 
 import lombok.Cleanup;
-import lombok.extern.slf4j.Slf4j;
 import org.cobbzilla.util.io.StreamUtil;
+import org.slf4j.Logger;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -14,12 +14,12 @@ import static org.cobbzilla.util.string.StringUtil.getPackagePath;
 import static org.cobbzilla.util.system.Sleep.sleep;
 import static org.cobbzilla.util.time.TimeUtil.formatDuration;
 
-@Slf4j
 public class HtmlScreenCapture extends PhantomUtil {
 
     private static final long TIMEOUT = TimeUnit.SECONDS.toMillis(60);
 
     public static final String SCRIPT = StreamUtil.loadResourceAsStringOrDie(getPackagePath(HtmlScreenCapture.class)+"/html_screen_capture.js");
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(HtmlScreenCapture.class);
 
     public synchronized void capture (String url, File file) { capture(url, file, TIMEOUT); }
 

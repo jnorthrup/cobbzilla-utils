@@ -3,13 +3,10 @@ package org.cobbzilla.util.reflect;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.MethodUtils;
 import org.apache.commons.collections.Transformer;
 import org.apache.commons.lang3.ArrayUtils;
+import org.slf4j.Logger;
 
 import java.io.Closeable;
 import java.lang.annotation.Annotation;
@@ -25,10 +22,10 @@ import static org.cobbzilla.util.string.StringUtil.uncapitalize;
 /**
  * Handy tools for working quickly with reflection APIs, which tend to be verbose.
  */
-@Slf4j
 public class ReflectionUtil {
 
     public static final Class<?>[] EMPTY_CLASS_ARRAY = new Class<?>[0];
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(ReflectionUtil.class);
 
     public static Boolean toBoolean(Object object) {
         if (object == null) return null;
@@ -955,12 +952,29 @@ public class ReflectionUtil {
         }
     }
 
-    @NoArgsConstructor @AllArgsConstructor
     public static class Setter<T> {
-        @Getter protected String field;
-        @Getter protected String value;
+        protected String field;
+        protected String value;
+
+        @java.beans.ConstructorProperties({"field", "value"})
+        public Setter(String field, String value) {
+            this.field = field;
+            this.value = value;
+        }
+
+        public Setter() {
+        }
+
         public void set(T data) { ReflectionUtil.set(data, field, value); }
         @Override public String toString() { return getClass().getName() + '{' + field + ", " + value + '}'; }
+
+        public String getField() {
+            return this.field;
+        }
+
+        public String getValue() {
+            return this.value;
+        }
     }
 
     // adapted from https://stackoverflow.com/a/2924426/1251543

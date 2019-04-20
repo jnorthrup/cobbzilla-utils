@@ -1,16 +1,16 @@
 package org.cobbzilla.util.string;
 
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 
 import java.util.ResourceBundle;
 
-@Slf4j
 public abstract class ResourceMessages  {
+
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(ResourceMessages.class);
 
     protected String getBundleName() { return "labels/"+getClass().getSimpleName(); }
 
-    @Getter(lazy=true) private final ResourceBundle bundle = ResourceBundle.getBundle(getBundleName());
+    private final ResourceBundle bundle = ResourceBundle.getBundle(getBundleName());
 
     // todo: add support for locale-specific bundles and messages
     public String translate(String messageTemplate) {
@@ -27,4 +27,7 @@ public abstract class ResourceMessages  {
         }
     }
 
+    public ResourceBundle getBundle() {
+        return this.bundle;
+    }
 }

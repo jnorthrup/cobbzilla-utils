@@ -1,6 +1,6 @@
 package org.cobbzilla.util.io;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -14,9 +14,9 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import static org.cobbzilla.util.system.Sleep.nap;
 
-@Slf4j
 public abstract class DamperedCompositeBufferedFilesystemWatcher extends CompositeBufferedFilesystemWatcher {
 
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(DamperedCompositeBufferedFilesystemWatcher.class);
     private final AtomicLong damper = new AtomicLong(0);
     private final AtomicReference<Thread> damperThread = new AtomicReference<>();
     private final AtomicReference<List<WatchEvent<?>>> buffer = new AtomicReference<>();

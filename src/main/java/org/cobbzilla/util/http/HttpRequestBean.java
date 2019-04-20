@@ -1,7 +1,6 @@
 package org.cobbzilla.util.http;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
 import lombok.experimental.Accessors;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpHost;
@@ -32,18 +31,22 @@ import static org.cobbzilla.util.http.HttpMethods.*;
  *   * an optional `entity`, representing the request body to send for methods like POST and PUT
  *   * an optional array of `headers`, name/value pairs (allowing duplicates) that will be the HTTP request headers
  */
-@NoArgsConstructor @ToString(of={"method", "uri"}) @Accessors(chain=true)
+@Accessors(chain=true)
 public class HttpRequestBean {
 
-    @Getter @Setter private String method = GET;
-    @Getter @Setter private String uri;
+    private String method = GET;
+    private String uri;
 
-    @Getter @Setter private String entity;
-    @Getter @Setter private InputStream entityInputStream;
+    private String entity;
+    private InputStream entityInputStream;
+
+    public HttpRequestBean() {
+    }
+
     public boolean hasData () { return entity != null; }
     public boolean hasStream () { return entityInputStream != null; }
 
-    @Getter @Setter private List<NameAndValue> headers = new ArrayList<>();
+    private List<NameAndValue> headers = new ArrayList<>();
     public HttpRequestBean withHeader (String name, String value) { setHeader(name, value); return this; }
     public HttpRequestBean setHeader (String name, String value) {
         headers.add(new NameAndValue(name, value));
@@ -87,7 +90,7 @@ public class HttpRequestBean {
         return map;
     }
 
-    @Getter(lazy=true, value=AccessLevel.PRIVATE) private final URI _uri = initURI();
+    private final URI _uri = initURI();
 
     private URI initURI() { return StringUtil.uriOrDie(uri); }
 
@@ -95,12 +98,13 @@ public class HttpRequestBean {
     @JsonIgnore public int getPort () { return get_uri().getPort(); }
     @JsonIgnore public String getPath () { return get_uri().getPath(); }
 
-    @JsonIgnore @Getter(lazy=true) private final HttpHost httpHost = initHttpHost();
+    @JsonIgnore
+    private final HttpHost httpHost = initHttpHost();
     private HttpHost initHttpHost() { return new HttpHost(getHost(), getPort(), get_uri().getScheme()); }
 
-    @Getter @Setter private HttpAuthType authType;
-    @Getter @Setter private String authUsername;
-    @Getter @Setter private String authPassword;
+    private HttpAuthType authType;
+    private String authUsername;
+    private String authPassword;
 
     public boolean hasAuth () { return authType != null; }
 
@@ -164,4 +168,87 @@ public class HttpRequestBean {
         return clientBuilder;
     }
 
+    public java.lang.String toString() {
+        return "HttpRequestBean(method=" + this.method + ", uri=" + this.uri + ")";
+    }
+
+    public String getMethod() {
+        return this.method;
+    }
+
+    public String getUri() {
+        return this.uri;
+    }
+
+    public String getEntity() {
+        return this.entity;
+    }
+
+    public InputStream getEntityInputStream() {
+        return this.entityInputStream;
+    }
+
+    public List<NameAndValue> getHeaders() {
+        return this.headers;
+    }
+
+    private URI get_uri() {
+        return this._uri;
+    }
+
+    public HttpHost getHttpHost() {
+        return this.httpHost;
+    }
+
+    public HttpAuthType getAuthType() {
+        return this.authType;
+    }
+
+    public String getAuthUsername() {
+        return this.authUsername;
+    }
+
+    public String getAuthPassword() {
+        return this.authPassword;
+    }
+
+    public HttpRequestBean setMethod(String method) {
+        this.method = method;
+        return this;
+    }
+
+    public HttpRequestBean setUri(String uri) {
+        this.uri = uri;
+        return this;
+    }
+
+    public HttpRequestBean setEntity(String entity) {
+        this.entity = entity;
+        return this;
+    }
+
+    public HttpRequestBean setEntityInputStream(InputStream entityInputStream) {
+        this.entityInputStream = entityInputStream;
+        return this;
+    }
+
+    public HttpRequestBean setHeaders(List<NameAndValue> headers) {
+        this.headers = headers;
+        return this;
+    }
+
+    public HttpRequestBean setAuthType(HttpAuthType authType) {
+        this.authType = authType;
+        return this;
+    }
+
+    public HttpRequestBean setAuthUsername(String authUsername) {
+        this.authUsername = authUsername;
+        return this;
+    }
+
+    public HttpRequestBean setAuthPassword(String authPassword) {
+        this.authPassword = authPassword;
+        return this;
+    }
 }

@@ -1,25 +1,21 @@
 package org.cobbzilla.util.io;
 
 import lombok.Cleanup;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.cobbzilla.util.string.StringUtil;
+import org.slf4j.Logger;
 
 import java.io.*;
 
-import static org.cobbzilla.util.daemon.ZillaRuntime.die;
-import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
-import static org.cobbzilla.util.daemon.ZillaRuntime.stdin;
-import static org.cobbzilla.util.io.FileUtil.basename;
-import static org.cobbzilla.util.io.FileUtil.extensionOrName;
-import static org.cobbzilla.util.io.FileUtil.getDefaultTempDir;
+import static org.cobbzilla.util.daemon.ZillaRuntime.*;
+import static org.cobbzilla.util.io.FileUtil.*;
 
-@Slf4j
 public class StreamUtil {
 
     public static final String SUFFIX = ".tmp";
     public static final String PREFIX = "stream2file";
     public static final String CLASSPATH_PROTOCOL = "classpath://";
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(StreamUtil.class);
 
     public static File stream2temp (String path) { return stream2file(loadResourceAsStream(path), true, path); }
     public static File stream2temp (InputStream in) { return stream2file(in, true); }

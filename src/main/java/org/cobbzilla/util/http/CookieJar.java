@@ -1,19 +1,20 @@
 package org.cobbzilla.util.http;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.NoArgsConstructor;
 import org.apache.http.client.CookieStore;
 import org.apache.http.cookie.Cookie;
 import org.cobbzilla.util.collection.CaseInsensitiveStringKeyMap;
 
 import java.util.*;
 
-@NoArgsConstructor
 public class CookieJar extends CaseInsensitiveStringKeyMap<HttpCookieBean> implements CookieStore {
 
     public CookieJar(List<HttpCookieBean> cookies) { for (HttpCookieBean cookie : cookies) add(cookie); }
 
     public CookieJar(HttpCookieBean cookie) { add(cookie); }
+
+    public CookieJar() {
+    }
 
     public void add (HttpCookieBean cookie) {
         if (cookie.expired()) {

@@ -1,17 +1,19 @@
 package org.cobbzilla.util.reflect;
 
-import lombok.AllArgsConstructor;
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 import static org.cobbzilla.util.daemon.ZillaRuntime.die;
 
-@AllArgsConstructor
 public class Immutable<T> implements InvocationHandler {
 
     private final T obj;
+
+    @java.beans.ConstructorProperties({"obj"})
+    public Immutable(T obj) {
+        this.obj = obj;
+    }
 
     public Object invoke(Object proxy, Method m, Object[] args) throws Throwable {
 

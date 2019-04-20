@@ -1,7 +1,7 @@
 package org.cobbzilla.util.network;
 
 import com.sun.jna.Platform;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -11,11 +11,11 @@ import static org.cobbzilla.util.daemon.ZillaRuntime.die;
 import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
 import static org.cobbzilla.util.string.ValidationRegexes.IPv4_PATTERN;
 
-@Slf4j
 public class NetworkUtil {
 
     public static final String IPv4_ALL_ADDRS = "0.0.0.0";
     public static final String IPv4_LOCALHOST = "127.0.0.1";
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(NetworkUtil.class);
 
     public static boolean isLocalIpv4(String addr) {
         if (empty(addr)) return false;

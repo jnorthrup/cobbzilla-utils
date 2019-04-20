@@ -1,7 +1,6 @@
 package org.cobbzilla.util.http;
 
 import lombok.Cleanup;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
@@ -22,6 +21,7 @@ import org.cobbzilla.util.string.StringUtil;
 import org.cobbzilla.util.system.CommandResult;
 import org.cobbzilla.util.system.CommandShell;
 import org.cobbzilla.util.system.Sleep;
+import org.slf4j.Logger;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -43,10 +43,10 @@ import static org.cobbzilla.util.io.FileUtil.getDefaultTempDir;
 import static org.cobbzilla.util.string.StringUtil.CRLF;
 import static org.cobbzilla.util.system.Sleep.sleep;
 
-@Slf4j
 public class HttpUtil {
 
     public static final String DEFAULT_CERT_NAME = "ssl-https";
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(HttpUtil.class);
 
     public static Map<String, String> queryParams(URL url) throws UnsupportedEncodingException {
         return queryParams(url, StringUtil.UTF8);

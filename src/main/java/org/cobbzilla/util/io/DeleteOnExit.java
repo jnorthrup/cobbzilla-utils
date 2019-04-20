@@ -1,16 +1,16 @@
 package org.cobbzilla.util.io;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 public class DeleteOnExit implements Runnable {
 
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(DeleteOnExit.class);
     private static List<File> paths = new ArrayList<>();
 
     private DeleteOnExit () {}

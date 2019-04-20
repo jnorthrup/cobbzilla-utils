@@ -1,10 +1,8 @@
 package org.cobbzilla.util.system;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.Accessors;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
@@ -12,20 +10,22 @@ import java.io.UnsupportedEncodingException;
 import static org.cobbzilla.util.daemon.ZillaRuntime.die;
 import static org.cobbzilla.util.string.StringUtil.UTF8;
 
-@Accessors(chain=true) @Slf4j
+@Accessors(chain=true)
 public class CommandResult {
 
     // useful for mocks
     public static final CommandResult OK = new CommandResult(0, null, null);
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(CommandResult.class);
 
-    @Getter @Setter private String stdout;
-    @Getter @Setter private String stderr;
+    private String stdout;
+    private String stderr;
 
-    @Getter @Setter private Integer exitStatus;
+    private Integer exitStatus;
 
     @JsonIgnore public boolean isZeroExitStatus () { return exitStatus != null && exitStatus == 0; }
 
-    @JsonIgnore @Getter private Exception exception;
+    @JsonIgnore
+    private Exception exception;
     public boolean hasException () { return exception != null; }
     public String getExceptionString () { return hasException() ? exception.toString() : null; }
     public void setExceptionString (String ex) { exception = new Exception(ex); }
@@ -68,5 +68,36 @@ public class CommandResult {
                 ", stderr='" + stderr + '\'' +
                 ", exception=" + getExceptionString() +
                 '}';
+    }
+
+    public String getStdout() {
+        return this.stdout;
+    }
+
+    public String getStderr() {
+        return this.stderr;
+    }
+
+    public Integer getExitStatus() {
+        return this.exitStatus;
+    }
+
+    public Exception getException() {
+        return this.exception;
+    }
+
+    public CommandResult setStdout(String stdout) {
+        this.stdout = stdout;
+        return this;
+    }
+
+    public CommandResult setStderr(String stderr) {
+        this.stderr = stderr;
+        return this;
+    }
+
+    public CommandResult setExitStatus(Integer exitStatus) {
+        this.exitStatus = exitStatus;
+        return this;
     }
 }

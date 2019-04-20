@@ -1,6 +1,5 @@
 package org.cobbzilla.util.xml;
 
-import lombok.Getter;
 import net.sf.saxon.Configuration;
 import net.sf.saxon.lib.NamespaceConstant;
 import net.sf.saxon.om.NodeInfo;
@@ -37,7 +36,7 @@ public class XPath2 {
     public static XPath2 xpath(String element) { return new XPath2(matchElements(element)); }
     public static XPath2 xpath(String... elements) { return new XPath2(matchElements(elements)); }
 
-    @Getter(lazy=true) private static final XPathFactory xpathFactory = initXpathFactory();
+    private static final XPathFactory xpathFactory = initXpathFactory();
     private static XPathFactory initXpathFactory() {
         try {
             sysinit();
@@ -47,7 +46,7 @@ public class XPath2 {
         }
     }
 
-    @Getter(lazy=true) private static final XPath xPath = initXPath();
+    private static final XPath xPath = initXPath();
     private static XPath initXPath() { return getXpathFactory().newXPath(); }
 
     private static final AtomicBoolean initialized = new AtomicBoolean(false);
@@ -61,13 +60,21 @@ public class XPath2 {
         }
     }
 
-    @Getter private Map<String, Path> xpaths = new HashMap<>();
+    private Map<String, Path> xpaths = new HashMap<>();
 
     public XPath2 (String... expressions) {
         if (empty(expressions)) die("XPath2: no expressions");
         for (String expr : expressions) {
             xpaths.put(expr, new Path(expr));
         }
+    }
+
+    public static XPathFactory getXpathFactory() {
+        return XPath2.xpathFactory;
+    }
+
+    public static XPath getXPath() {
+        return XPath2.xPath;
     }
 
     public Map<String, String> firstMatches (String xml) {  return firstMatches(new Doc(xml)); }
@@ -91,9 +98,13 @@ public class XPath2 {
         }
     }
 
+    public Map<String, Path> getXpaths() {
+        return this.xpaths;
+    }
+
     public static class Path {
 
-        @Getter private XPathExpression expr;
+        private XPathExpression expr;
 
         public Path (String xpath) {
             try {
@@ -116,10 +127,14 @@ public class XPath2 {
                 return die("firstMatch: "+e, e);
             }
         }
+
+        public XPathExpression getExpr() {
+            return this.expr;
+        }
     }
 
     public static class Doc {
-        @Getter private TreeInfo doc;
+        private TreeInfo doc;
         public Doc (String xml) {
             final InputSource is = new InputSource(new ByteArrayInputStream(xml.getBytes()));
             final SAXSource ss = new SAXSource(is);
@@ -129,6 +144,10 @@ public class XPath2 {
             } catch (Exception e) {
                 die("XPath2.Doc: "+e, e);
             }
+        }
+
+        public TreeInfo getDoc() {
+            return this.doc;
         }
     }
 }

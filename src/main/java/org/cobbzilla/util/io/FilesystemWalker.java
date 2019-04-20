@@ -1,12 +1,9 @@
 package org.cobbzilla.util.io;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.Accessors;
-import lombok.extern.slf4j.Slf4j;
 import org.cobbzilla.util.daemon.AwaitResult;
 import org.cobbzilla.util.string.StringUtil;
+import org.slf4j.Logger;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -24,18 +21,19 @@ import static org.cobbzilla.util.io.FileUtil.isSymlink;
 import static org.cobbzilla.util.system.Sleep.sleep;
 import static org.cobbzilla.util.time.TimeUtil.parseDuration;
 
-@Accessors(chain=true) @Slf4j
+@Accessors(chain=true)
 public class FilesystemWalker {
 
-    @Getter private final List<File> dirs = new ArrayList<>();
-    @Getter private final List<FilesystemVisitor> visitors = new ArrayList<>();
-    @Getter @Setter private boolean includeSymlinks = true;
-    @Getter @Setter private boolean visitDirs = false;
-    @Getter @Setter private int threads = 5;
-    @Getter @Setter private int size = 1_000_000;
-    @Getter @Setter private long timeout = TimeUnit.MINUTES.toMillis(15);
-    @Getter @Setter private FileFilter filter;
-    @Getter @Setter private long sleepTime = TimeUnit.SECONDS.toMillis(5);
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(FilesystemWalker.class);
+    private final List<File> dirs = new ArrayList<>();
+    private final List<FilesystemVisitor> visitors = new ArrayList<>();
+    private boolean includeSymlinks = true;
+    private boolean visitDirs = false;
+    private int threads = 5;
+    private int size = 1_000_000;
+    private long timeout = TimeUnit.MINUTES.toMillis(15);
+    private FileFilter filter;
+    private long sleepTime = TimeUnit.SECONDS.toMillis(5);
 
     public boolean hasFilter () { return filter != null; }
 
@@ -45,8 +43,8 @@ public class FilesystemWalker {
     public FilesystemWalker withVisitor (FilesystemVisitor visitor) { visitors.add(visitor); return this; }
     public FilesystemWalker withTimeoutDuration (String duration) { setTimeout(parseDuration(duration)); return this; }
 
-    @Getter(lazy=true) private final ExecutorService pool = fixedPool(getThreads());
-    @Getter(lazy=true) private final List<Future<?>> futures = new ArrayList<>(getSize());
+    private final ExecutorService pool = fixedPool(getThreads());
+    private final List<Future<?>> futures = new ArrayList<>(getSize());
 
     public AwaitResult walk() {
         for (File dir : dirs) fileJob(dir);
@@ -80,9 +78,92 @@ public class FilesystemWalker {
         synchronized (futures) { return futures.add(future); }
     }
 
-    @AllArgsConstructor
+    public List<File> getDirs() {
+        return this.dirs;
+    }
+
+    public List<FilesystemVisitor> getVisitors() {
+        return this.visitors;
+    }
+
+    public boolean isIncludeSymlinks() {
+        return this.includeSymlinks;
+    }
+
+    public boolean isVisitDirs() {
+        return this.visitDirs;
+    }
+
+    public int getThreads() {
+        return this.threads;
+    }
+
+    public int getSize() {
+        return this.size;
+    }
+
+    public long getTimeout() {
+        return this.timeout;
+    }
+
+    public FileFilter getFilter() {
+        return this.filter;
+    }
+
+    public long getSleepTime() {
+        return this.sleepTime;
+    }
+
+    public ExecutorService getPool() {
+        return this.pool;
+    }
+
+    public List<Future<?>> getFutures() {
+        return this.futures;
+    }
+
+    public FilesystemWalker setIncludeSymlinks(boolean includeSymlinks) {
+        this.includeSymlinks = includeSymlinks;
+        return this;
+    }
+
+    public FilesystemWalker setVisitDirs(boolean visitDirs) {
+        this.visitDirs = visitDirs;
+        return this;
+    }
+
+    public FilesystemWalker setThreads(int threads) {
+        this.threads = threads;
+        return this;
+    }
+
+    public FilesystemWalker setSize(int size) {
+        this.size = size;
+        return this;
+    }
+
+    public FilesystemWalker setTimeout(long timeout) {
+        this.timeout = timeout;
+        return this;
+    }
+
+    public FilesystemWalker setFilter(FileFilter filter) {
+        this.filter = filter;
+        return this;
+    }
+
+    public FilesystemWalker setSleepTime(long sleepTime) {
+        this.sleepTime = sleepTime;
+        return this;
+    }
+
     private class FsWalker implements Runnable {
         private final File file;
+
+        @java.beans.ConstructorProperties({"file"})
+        public FsWalker(File file) {
+            this.file = file;
+        }
 
         @Override public void run() {
             if (isSymlink(file) && !includeSymlinks) return;

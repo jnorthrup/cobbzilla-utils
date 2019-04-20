@@ -1,10 +1,7 @@
 package org.cobbzilla.util.jdbc;
 
-import lombok.AccessLevel;
 import lombok.Cleanup;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,12 +10,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
-@NoArgsConstructor(access=AccessLevel.PRIVATE) @Slf4j
 public class ResultSetBean {
 
     public static final ResultSetBean EMPTY = new ResultSetBean();
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(ResultSetBean.class);
 
-    @Getter private final ArrayList<Map<String, Object>> rows = new ArrayList<>();
+    private final ArrayList<Map<String, Object>> rows = new ArrayList<>();
+
+    private ResultSetBean() {
+    }
+
     public boolean isEmpty () { return rows.isEmpty(); }
 
     public int rowCount () { return isEmpty() ? 0 : rows.size(); }
@@ -98,4 +99,7 @@ public class ResultSetBean {
         return columns;
     }
 
+    public ArrayList<Map<String, Object>> getRows() {
+        return this.rows;
+    }
 }

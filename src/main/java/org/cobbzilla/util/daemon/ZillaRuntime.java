@@ -3,15 +3,14 @@ package org.cobbzilla.util.daemon;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.cobbzilla.util.collection.ToStringTransformer;
 import org.cobbzilla.util.error.GeneralErrorHandler;
 import org.cobbzilla.util.io.StreamUtil;
+import org.cobbzilla.util.reflect.ReflectionUtil;
 import org.cobbzilla.util.string.StringUtil;
+import org.slf4j.Logger;
 
 import java.io.*;
 import java.lang.management.ManagementFactory;
@@ -30,16 +29,15 @@ import static org.apache.commons.collections.CollectionUtils.collect;
 import static org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace;
 import static org.cobbzilla.util.io.FileUtil.abs;
 import static org.cobbzilla.util.io.FileUtil.list;
-import static org.cobbzilla.util.reflect.ReflectionUtil.instantiate;
 import static org.cobbzilla.util.system.Sleep.sleep;
 
 /**
  * the Zilla doesn't mess around.
  */
-@Slf4j
 public class ZillaRuntime {
 
     public static final String CLASSPATH_PREFIX = "classpath:";
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(ZillaRuntime.class);
 
     public static void terminate(Thread thread, long timeout) {
         if (thread == null || !thread.isAlive()) return;
@@ -67,7 +65,7 @@ public class ZillaRuntime {
         return t;
     }
 
-    @Getter @Setter private static ErrorApi errorApi;
+    private static ErrorApi errorApi;
 
     public static <T> T die(String message)              { return _throw(new IllegalStateException(message, null)); }
     public static <T> T die(String message, Exception e) { return _throw(new IllegalStateException(message, e)); }
@@ -149,7 +147,7 @@ public class ZillaRuntime {
         if (thing instanceof Collection) {
             final List list = new ArrayList((Collection) thing);
             Collections.sort(list);
-            final Collection copy = (Collection) instantiate(thing.getClass());
+            final Collection copy = (Collection) ReflectionUtil.instantiate(thing.getClass());
             copy.addAll(list);
             return (T) copy;
         }
@@ -194,7 +192,7 @@ public class ZillaRuntime {
 
     public static String uuid() { return UUID.randomUUID().toString(); }
 
-    @Getter @Setter private static volatile long systemTimeOffset = 0;
+    private static volatile long systemTimeOffset = 0;
     public static long now() { return System.currentTimeMillis() + systemTimeOffset; }
     public static String hexnow() { return toHexString(now()); }
     public static String hexnow(long now) { return toHexString(now); }
@@ -310,5 +308,21 @@ public class ZillaRuntime {
                 log.warn("setSelfDestruct: already set!");
             }
         }
+    }
+
+    public static ErrorApi getErrorApi() {
+        return ZillaRuntime.errorApi;
+    }
+
+    public static long getSystemTimeOffset() {
+        return ZillaRuntime.systemTimeOffset;
+    }
+
+    public static void setErrorApi(ErrorApi errorApi) {
+        ZillaRuntime.errorApi = errorApi;
+    }
+
+    public static void setSystemTimeOffset(long systemTimeOffset) {
+        ZillaRuntime.systemTimeOffset = systemTimeOffset;
     }
 }

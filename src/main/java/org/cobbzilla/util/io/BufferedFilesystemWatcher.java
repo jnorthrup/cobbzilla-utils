@@ -1,7 +1,5 @@
 package org.cobbzilla.util.io;
 
-import lombok.Getter;
-import lombok.ToString;
 import org.cobbzilla.util.collection.InspectCollection;
 import org.cobbzilla.util.system.Sleep;
 
@@ -24,11 +22,10 @@ import static org.cobbzilla.util.io.FileUtil.abs;
  * Extend this class and override the "fire" method. You will receive one callback when
  * your timeout elapses, or if the buffer of events exceeds maxEvents.
  */
-@ToString(callSuper=true, of={"timeout", "maxEvents"})
 public abstract class BufferedFilesystemWatcher extends FilesystemWatcher implements Closeable {
 
-    @Getter private final long timeout;
-    @Getter private final int maxEvents;
+    private final long timeout;
+    private final int maxEvents;
 
     private final Thread monitor;
     private long lastFlush;
@@ -72,6 +69,18 @@ public abstract class BufferedFilesystemWatcher extends FilesystemWatcher implem
     private boolean shouldFlush() { return bufferTooBig() || (!buffer.isEmpty() && beenTooLong()); }
 
     @Override protected void handleEvent(WatchEvent<?> event) { buffer.add(event); }
+
+    public java.lang.String toString() {
+        return "BufferedFilesystemWatcher(super=" + super.toString() + ", timeout=" + this.timeout + ", maxEvents=" + this.maxEvents + ")";
+    }
+
+    public long getTimeout() {
+        return this.timeout;
+    }
+
+    public int getMaxEvents() {
+        return this.maxEvents;
+    }
 
     private class BfsMonitor implements Runnable {
         public volatile boolean alive = false;

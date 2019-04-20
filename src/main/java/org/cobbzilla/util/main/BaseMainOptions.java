@@ -1,7 +1,5 @@
 package org.cobbzilla.util.main;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.kohsuke.args4j.Option;
 
 import java.io.*;
@@ -15,13 +13,13 @@ public class BaseMainOptions {
     public static final String OPT_HELP = "-h";
     public static final String LONGOPT_HELP= "--help";
     @Option(name=OPT_HELP, aliases=LONGOPT_HELP, usage=USAGE_HELP)
-    @Getter @Setter private boolean help;
+    private boolean help;
 
     public static final String USAGE_VERBOSE_FATAL_ERRORS = "Verbose fatal errors";
     public static final String OPT_VERBOSE_FATAL_ERRORS = "-z";
     public static final String LONGOPT_VERBOSE_FATAL_ERRORS= "--verbose-fatal-errors";
     @Option(name=OPT_VERBOSE_FATAL_ERRORS, aliases=LONGOPT_VERBOSE_FATAL_ERRORS, usage=USAGE_VERBOSE_FATAL_ERRORS)
-    @Getter @Setter private boolean verboseFatalErrors = false;
+    private boolean verboseFatalErrors = false;
 
     public void out(String s) { System.out.println(s); }
     public void err(String s) { System.err.println(s); }
@@ -66,5 +64,21 @@ public class BaseMainOptions {
         } catch (Exception e) {
             die("No such field: "+field+": "+e, e);
         }
+    }
+
+    public boolean isHelp() {
+        return this.help;
+    }
+
+    public boolean isVerboseFatalErrors() {
+        return this.verboseFatalErrors;
+    }
+
+    public void setHelp(boolean help) {
+        this.help = help;
+    }
+
+    public void setVerboseFatalErrors(boolean verboseFatalErrors) {
+        this.verboseFatalErrors = verboseFatalErrors;
     }
 }

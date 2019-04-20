@@ -1,25 +1,24 @@
 package org.cobbzilla.util.daemon;
 
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.slf4j.Logger;
 
 import static org.cobbzilla.util.daemon.ZillaRuntime.now;
 import static org.cobbzilla.util.daemon.ZillaRuntime.readStdin;
 import static org.cobbzilla.util.system.Sleep.sleep;
 
-@Slf4j
 public abstract class SimpleDaemon implements Runnable {
 
     public static final DateTimeFormatter DFORMAT = DateTimeFormat.forPattern("yyyy-MMM-dd HH:mm:ss");
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(SimpleDaemon.class);
 
     public SimpleDaemon () { this.name = getClass().getSimpleName(); }
 
     public SimpleDaemon (String name) { this.name = name; }
 
-    @Getter private String name;
-    @Getter private long lastProcessTime = 0;
+    private String name;
+    private long lastProcessTime = 0;
 
     private volatile Thread mainThread = null;
     private final Object lock = new Object();
@@ -163,5 +162,13 @@ public abstract class SimpleDaemon implements Runnable {
         return "isDone=" + getIsDone()
                 + "\nlastProcessTime=" + DFORMAT.print(lastProcessTime)
                 + "\nsleepTime=" + getSleepTime()+"ms";
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public long getLastProcessTime() {
+        return this.lastProcessTime;
     }
 }

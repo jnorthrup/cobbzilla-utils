@@ -1,7 +1,6 @@
 package org.cobbzilla.util.io;
 
 import lombok.Cleanup;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.archivers.ArchiveException;
 import org.apache.commons.compress.archivers.ArchiveStreamFactory;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
@@ -12,6 +11,7 @@ import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.io.FileUtils;
 import org.cobbzilla.util.system.Command;
+import org.slf4j.Logger;
 
 import java.io.*;
 
@@ -20,8 +20,9 @@ import static org.cobbzilla.util.daemon.ZillaRuntime.die;
 import static org.cobbzilla.util.io.FileUtil.abs;
 import static org.cobbzilla.util.system.CommandShell.*;
 
-@Slf4j
 public class Tarball {
+
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(Tarball.class);
 
     /**
      * @param tarball the tarball to unroll. Can be .tar.gz or .tar.bz2

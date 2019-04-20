@@ -2,8 +2,6 @@ package org.cobbzilla.util.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.JsonNode;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.io.IOException;
@@ -14,9 +12,9 @@ import static org.cobbzilla.util.json.JsonUtil.FULL_MAPPER;
 @Accessors(chain=true)
 public class JsonEditOperation {
 
-    @Getter @Setter private JsonEditOperationType type;
-    @Getter @Setter private String path;
-    @Getter @Setter private String json;
+    private JsonEditOperationType type;
+    private String path;
+    private String json;
 
     public boolean isRead() { return type == JsonEditOperationType.read; }
 
@@ -24,8 +22,9 @@ public class JsonEditOperation {
 
     public boolean hasIndex () { return getIndex() != null; }
 
-    @JsonIgnore @Getter(lazy=true) private final List<String> tokens = initTokens();
     private List<String> initTokens() { return JsonUtil.tokenize(path); }
+    @JsonIgnore
+    private List<String> tokens = null;
 
     public boolean isEmptyBrackets () {
         int bracketPos = path.indexOf("[");
@@ -65,4 +64,35 @@ public class JsonEditOperation {
     public String getName(int part) {
         return getTokens().get(part); }
 
+    public JsonEditOperationType getType() {
+        return this.type;
+    }
+
+    public String getPath() {
+        return this.path;
+    }
+
+    public String getJson() {
+        return this.json;
+    }
+
+    public List<String> getTokens() {
+        if(tokens==null)tokens=initTokens();
+        return this .tokens;
+    }
+
+    public JsonEditOperation setType(JsonEditOperationType type) {
+        this.type = type;
+        return this;
+    }
+
+    public JsonEditOperation setPath(String path) {
+        this.path = path;
+        return this;
+    }
+
+    public JsonEditOperation setJson(String json) {
+        this.json = json;
+        return this;
+    }
 }

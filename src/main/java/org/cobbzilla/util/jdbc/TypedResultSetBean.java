@@ -1,9 +1,7 @@
 package org.cobbzilla.util.jdbc;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import org.cobbzilla.util.reflect.ReflectionUtil;
+import org.slf4j.Logger;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
@@ -16,22 +14,21 @@ import static org.cobbzilla.util.reflect.ReflectionUtil.getDeclaredField;
 import static org.cobbzilla.util.reflect.ReflectionUtil.instantiate;
 import static org.cobbzilla.util.string.StringUtil.snakeCaseToCamelCase;
 
-@Slf4j
 public class TypedResultSetBean<T> extends ResultSetBean implements Iterable<T> {
 
-    public TypedResultSetBean(Class<T> clazz, ResultSet rs) throws SQLException { super(rs); rowType = clazz; }
-    public TypedResultSetBean(Class<T> clazz, PreparedStatement ps) throws SQLException { super(ps); rowType = clazz; }
-    public TypedResultSetBean(Class<T> clazz, Connection conn, String sql) throws SQLException { super(conn, sql); rowType = clazz; }
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(TypedResultSetBean.class);
+
+    public TypedResultSetBean(Class<T> clazz, ResultSet rs) throws SQLException { super(rs); rowType = clazz; init();}
+    public TypedResultSetBean(Class<T> clazz, PreparedStatement ps) throws SQLException { super(ps); rowType = clazz; init();}
+    public TypedResultSetBean(Class<T> clazz, Connection conn, String sql) throws SQLException { super(conn, sql); rowType = clazz;init() ;}
 
     private final Class<T> rowType;
-    @Getter(lazy=true, value=AccessLevel.PRIVATE) private final List<T> typedRows = getTypedRows(rowType);
-
-    @Override public Iterator<T> iterator() { return new ArrayList<>(getTypedRows()).iterator(); }
-
-    private List<T> getTypedRows(Class<T> clazz) {
-        final List<T> typedRows = new ArrayList<>();
+    private   List<T> typedRows;
+void init()
+    {
+        final List<T> typedRows1 = new ArrayList<>();
         for (Map<String, Object> row : getRows()) {
-            final T thing = instantiate(clazz);
+            final T thing = instantiate(rowType);
             for (String name : row.keySet()) {
                 final String field = snakeCaseToCamelCase(name);
                 try {
@@ -41,10 +38,12 @@ public class TypedResultSetBean<T> extends ResultSetBean implements Iterable<T> 
                     log.warn("getTypedRows: error setting "+field+": "+e);
                 }
             }
-            typedRows.add(thing);
+            typedRows1.add(thing);
         }
-        return typedRows;
+        typedRows = typedRows1;
     }
+
+    @Override public Iterator<T> iterator() { return new ArrayList<>(typedRows ).iterator(); }
 
     protected void readField(T thing, String field, Object value) {
         if (value != null) {

@@ -1,15 +1,15 @@
 package org.cobbzilla.util.daemon;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
-@Slf4j
 public class DaemonThreadFactory implements ThreadFactory {
 
     public static final DaemonThreadFactory instance = new DaemonThreadFactory();
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(DaemonThreadFactory.class);
 
     @Override public Thread newThread(Runnable r) {
         final Thread t = new Thread(r);

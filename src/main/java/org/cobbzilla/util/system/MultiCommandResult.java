@@ -1,13 +1,11 @@
 package org.cobbzilla.util.system;
 
-import lombok.Getter;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class MultiCommandResult {
 
-    @Getter private final Map<Command, CommandResult> results = new LinkedHashMap<>();
+    private final Map<Command, CommandResult> results = new LinkedHashMap<>();
 
     public boolean hasException () {
         for (CommandResult result : results.values()) {
@@ -24,5 +22,9 @@ public class MultiCommandResult {
                 "results=" + results +
                 ", exception=" + hasException() +
                 '}';
+    }
+
+    public Map<Command, CommandResult> getResults() {
+        return this.results;
     }
 }

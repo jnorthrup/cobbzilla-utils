@@ -1,10 +1,10 @@
 package org.cobbzilla.util.io;
 
 import lombok.Cleanup;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorOutputStream;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 import java.io.*;
 import java.nio.file.FileSystems;
@@ -18,12 +18,12 @@ import static org.cobbzilla.util.daemon.ZillaRuntime.die;
 import static org.cobbzilla.util.daemon.ZillaRuntime.empty;
 import static org.cobbzilla.util.io.TempDir.quickTemp;
 
-@Slf4j
 public class FileUtil {
 
     public static final File DEFAULT_TEMPDIR = new File(System.getProperty("java.io.tmpdir"));
     private static final File[] EMPTY_ARRAY = {};
     public static final String sep = File.separator;
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(FileUtil.class);
 
     public static String defaultTempDir = System.getProperty("user.home") + "/tmp/zilla";
 

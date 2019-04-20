@@ -319,28 +319,10 @@ public class JsonUtil {
 
     public static List<String> tokenize(String path) {
         final List<String> pathParts = new ArrayList<>();
-        final StringTokenizer st = new StringTokenizer(path, ".'", true);
-        boolean collectingQuotedToken = false;
-        StringBuffer pathToken = new StringBuffer();
-        while (st.hasMoreTokens()) {
-            final String token = st.nextToken();
-            if (token.equals("'")) {
-                collectingQuotedToken = !collectingQuotedToken;
+        String[] split = path.split("[\\.\\']+");
 
-            } else if (collectingQuotedToken) {
-                pathToken.append(token);
 
-            } else if (token.equals(".") && pathToken.length() > 0) {
-                pathParts.add(pathToken.toString());
-                pathToken = new StringBuffer();
-
-            } else {
-                pathToken.append(token);
-            }
-        }
-        if (collectingQuotedToken) throw new IllegalArgumentException("Unterminated single quote in: "+path);
-        if (pathToken.length() > 0) pathParts.add(pathToken.toString());
-        return pathParts;
+        return      Arrays.asList(split );
     }
 
     public static ObjectNode replaceNode(File file, String path, String replacement) throws Exception {
