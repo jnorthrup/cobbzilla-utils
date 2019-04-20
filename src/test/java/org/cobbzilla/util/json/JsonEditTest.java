@@ -16,7 +16,7 @@ import static org.junit.Assert.assertNull;
 
 public class JsonEditTest {
 
-    public static final String TEST_JSON = StringUtil.getPackagePath(JsonEditTest.class)+"/test.json";
+    public static final String TEST_JSON = StringUtil.INSTANCE.getPackagePath(JsonEditTest.class)+"/test.json";
     private final Random random = new Random();
 
     @Test public void testEditJson() throws Exception {
@@ -33,7 +33,7 @@ public class JsonEditTest {
                         .setPath("thing.field2")
                         .setJson(toReplace.toString()));
         result = jsonEdit.edit();
-        assertEquals(toReplace, JsonUtil.fromJson(result, "thing.field2", Integer.class));
+        assertEquals(toReplace, JsonUtil.INSTANCE.fromJson(result, "thing.field2", Integer.class));
 
         // replace a node within an array
         final Integer toReplace2 = random.nextInt();
@@ -44,7 +44,7 @@ public class JsonEditTest {
                         .setPath("thing.field1[2]")
                         .setJson(toReplace2.toString()));
         result = jsonEdit.edit();
-        assertEquals(toReplace2, JsonUtil.fromJson(result, "thing.field1[2]", Integer.class));
+        assertEquals(toReplace2, JsonUtil.INSTANCE.fromJson(result, "thing.field1[2]", Integer.class));
 
         // add a node
         final String rand0 = randomAlphanumeric(10);
@@ -56,7 +56,7 @@ public class JsonEditTest {
                         .setPath("thing.field3")
                         .setJson(toAdd0));
         result = jsonEdit.edit();
-        assertEquals(rand0, JsonUtil.fromJson(result, "thing.field3.sub2", String.class));
+        assertEquals(rand0, JsonUtil.INSTANCE.fromJson(result, "thing.field3.sub2", String.class));
 
         // add a node
         final String rand = randomAlphanumeric(10);
@@ -68,7 +68,7 @@ public class JsonEditTest {
                         .setPath("thing.field2")
                         .setJson(toAdd));
         result = jsonEdit.edit();
-        assertEquals(rand, JsonUtil.fromJson(result, "thing.field2.subC", String.class));
+        assertEquals(rand, JsonUtil.INSTANCE.fromJson(result, "thing.field2.subC", String.class));
 
         // add a node at the root
         final String rand2 = randomAlphanumeric(10);
@@ -79,7 +79,7 @@ public class JsonEditTest {
                         .setType(JsonEditOperationType.write)
                         .setJson(rootAdd));
         result = jsonEdit.edit();
-        assertEquals(rand2, JsonUtil.fromJson(result, "rootfoo", String.class));
+        assertEquals(rand2, JsonUtil.INSTANCE.fromJson(result, "rootfoo", String.class));
 
         // add a numeric node at the root
         final Integer rootAdd2 = random.nextInt();
@@ -90,7 +90,7 @@ public class JsonEditTest {
                         .setPath("newguy")
                         .setJson(rootAdd2.toString()));
         result = jsonEdit.edit();
-        assertEquals(rootAdd2, JsonUtil.fromJson(result, "newguy", Integer.class));
+        assertEquals(rootAdd2, JsonUtil.INSTANCE.fromJson(result, "newguy", Integer.class));
 
         // replace something that doesn't exist -- should add it
         final String rand3 = randomAlphanumeric(10);
@@ -102,7 +102,7 @@ public class JsonEditTest {
                         .setPath("thing.field3")
                         .setJson(toReplace3));
         result = jsonEdit.edit();
-        assertEquals(rand3, JsonUtil.fromJson(result, "thing.field3", String.class));
+        assertEquals(rand3, JsonUtil.INSTANCE.fromJson(result, "thing.field3", String.class));
 
         // append to a list
         final String rand4 = randomAlphanumeric(10);
@@ -114,8 +114,8 @@ public class JsonEditTest {
                         .setPath("thing.field1[]")
                         .setJson(toReplace4));
         result = jsonEdit.edit();
-        assertEquals(rand4, JsonUtil.fromJson(result, "thing.field1[3]", String.class));
-        assertEquals(4, JsonUtil.fromJson(result, "thing.field1", String[].class).length);
+        assertEquals(rand4, JsonUtil.INSTANCE.fromJson(result, "thing.field1[3]", String.class));
+        assertEquals(4, JsonUtil.INSTANCE.fromJson(result, "thing.field1", String[].class).length);
 
         // write a new, deep node at the root level of the tree.
         // ObjectNodes should be created along the way for missing nodes.
@@ -128,7 +128,7 @@ public class JsonEditTest {
                         .setPath(deepNodePath)
                         .setJson(deepNodeValue.toString()));
         result = jsonEdit.edit();
-        assertEquals(deepNodeValue, JsonUtil.fromJson(result, deepNodePath, Integer.class));
+        assertEquals(deepNodeValue, JsonUtil.INSTANCE.fromJson(result, deepNodePath, Integer.class));
 
         // write a new, deep node within the tree.
         // ObjectNodes should be created along the way for missing nodes.
@@ -141,7 +141,7 @@ public class JsonEditTest {
                         .setPath(deepNodePath2)
                         .setJson(deepNodeValue2.toString()));
         result = jsonEdit.edit();
-        assertEquals(deepNodeValue2, JsonUtil.fromJson(result, deepNodePath2, Integer.class));
+        assertEquals(deepNodeValue2, JsonUtil.INSTANCE.fromJson(result, deepNodePath2, Integer.class));
 
         // delete a node
         jsonEdit = new JsonEdit()
@@ -150,7 +150,7 @@ public class JsonEditTest {
                         .setType(JsonEditOperationType.delete)
                         .setPath("thing.field2"));
         result = jsonEdit.edit();
-        assertNull(JsonUtil.fromJson(result, TestData.class).thing.field2);
+        assertNull(JsonUtil.INSTANCE.fromJson(result, TestData.class).thing.field2);
     }
 
     private InputStream testJson() throws IOException {

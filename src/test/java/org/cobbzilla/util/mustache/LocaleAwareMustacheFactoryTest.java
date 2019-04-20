@@ -32,8 +32,8 @@ public class LocaleAwareMustacheFactoryTest {
 
     @Before
     public void setUp () throws Exception {
-        fileRoot = FileUtil.createTempDir(new File("/tmp"), "localeTest");
-        factory = LocaleAwareMustacheFactory.getFactory(fileRoot, LOCALE);
+        fileRoot = FileUtil.INSTANCE.createTempDir(new File("/tmp"), "localeTest");
+        factory = LocaleAwareMustacheFactory.Companion.getFactory(fileRoot, LOCALE);
     }
 
     @After
@@ -43,7 +43,7 @@ public class LocaleAwareMustacheFactoryTest {
 
     @Test
     public void testFindOnlyFullResource () throws Exception {
-        final String resource = "resource1.subject_en_US"+TEMPLATE_SUFFIX;
+        final String resource = "resource1.subject_en_US"+ Companion.getTEMPLATE_SUFFIX();
         populateTempDir(new String[] {resource});
 
         final List lines = IOUtils.readLines(factory.getReader("resource1.subject"));
@@ -53,8 +53,8 @@ public class LocaleAwareMustacheFactoryTest {
 
     @Test
     public void testFindLanguageResource () throws Exception {
-        final String resource = "resource1.subject"+TEMPLATE_SUFFIX;
-        final String resource_en = "resource1.subject_en"+TEMPLATE_SUFFIX;
+        final String resource = "resource1.subject"+ Companion.getTEMPLATE_SUFFIX();
+        final String resource_en = "resource1.subject_en"+ Companion.getTEMPLATE_SUFFIX();
         populateTempDir(new String[] {resource, resource_en});
 
         final List lines = IOUtils.readLines(factory.getReader("resource1.subject"));
@@ -64,7 +64,7 @@ public class LocaleAwareMustacheFactoryTest {
 
     @Test
     public void testFindDefaultResource () throws Exception {
-        final String resource = "resource1.subject"+TEMPLATE_SUFFIX;
+        final String resource = "resource1.subject"+ Companion.getTEMPLATE_SUFFIX();
         populateTempDir(new String[] {resource});
 
         final List lines = IOUtils.readLines(factory.getReader("resource1.subject"));
@@ -74,9 +74,9 @@ public class LocaleAwareMustacheFactoryTest {
 
     @Test
     public void testFindMostSpecificResource () throws Exception {
-        final String resource = "resource1.subject"+TEMPLATE_SUFFIX;
-        final String resource_en = "resource1.subject_en"+TEMPLATE_SUFFIX;
-        final String resource_en_us = "resource1.subject_en_US"+TEMPLATE_SUFFIX;
+        final String resource = "resource1.subject"+ Companion.getTEMPLATE_SUFFIX();
+        final String resource_en = "resource1.subject_en"+ Companion.getTEMPLATE_SUFFIX();
+        final String resource_en_us = "resource1.subject_en_US"+ Companion.getTEMPLATE_SUFFIX();
         populateTempDir(new String[] {resource, resource_en, resource_en_us});
 
         final List lines = IOUtils.readLines(factory.getReader("resource1.subject"));
@@ -87,7 +87,7 @@ public class LocaleAwareMustacheFactoryTest {
     @Test
     public void testResourceNotFound () throws Exception {
         try {
-            factory.getReader("resource1.subject"+TEMPLATE_SUFFIX);
+            factory.getReader("resource1.subject"+ Companion.getTEMPLATE_SUFFIX());
             fail("should have gotten resource not found");
         } catch (MustacheResourceNotFoundException e) {
             // expected

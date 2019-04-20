@@ -20,7 +20,7 @@ public class StringUtilTest {
 
     @Test public void testSplitIntoTerms () throws Exception {
         for (String[] test : TESTS) {
-            final List<String> terms = StringUtil.splitIntoTerms(test[0]);
+            final List<String> terms = StringUtil.INSTANCE.splitIntoTerms(test[0]);
             assertEquals("wrong # terms: "+test[0], test.length-1, terms.size());
             for (int i=1; i<test.length-1; i++) {
                 assertEquals("wrong term at index: "+i+" for test "+test[0], test[i], terms.get(i-1));

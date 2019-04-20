@@ -18,7 +18,7 @@ public class ImprovedTimezoneTest {
         }
 
         // validates that all Java timezones properly map to Linux timezones, and those timezones exist
-        for (ImprovedTimezone tz : ImprovedTimezone.getTimeZones()) {
+        for (ImprovedTimezone tz : ImprovedTimezone.Companion.getTimeZones()) {
             assertTrue(new File("/usr/share/zoneinfo/"+tz.getLinuxName()).exists());
         }
     }

@@ -22,13 +22,13 @@ import static org.junit.Assert.assertTrue;
 
 public class CommandShellTest {
 
-    public static final String TEST_SCRIPT = StringUtil.getPackagePath(CommandShellTest.class) + "/test.sh";
+    public static final String TEST_SCRIPT = StringUtil.INSTANCE.getPackagePath(CommandShellTest.class) + "/test.sh";
 
     private static File script;
 
     @BeforeClass public static void setup() throws Exception {
-        script = StreamUtil.loadResourceAsFile(TEST_SCRIPT);
-        CommandShell.chmod(script, "a+rx");
+        script = StreamUtil.INSTANCE.loadResourceAsFile(TEST_SCRIPT);
+        CommandShell.INSTANCE.chmod(script, "a+rx");
     }
 
     @AfterClass public static void teardown() throws Exception { script.delete(); }
@@ -36,7 +36,7 @@ public class CommandShellTest {
     @Test public void testStreamCallbacks() throws Exception {
         final TestFilterOutputStream out = new TestFilterOutputStream();
         final Command command = new Command(script).setOut(out);
-        CommandShell.exec(command);
+        CommandShell.INSTANCE.exec(command);
         assertEquals(5, out.getFoundPercentages().size());
         for (int i = 20; i <= 100; i += 20) {
             assertTrue(out.getFoundPercentages().contains(i));
@@ -53,7 +53,7 @@ public class CommandShellTest {
                 .addIndicator("marker::hedgehog", 100)
                 .setCallback(callback);
         final Command command = new Command(script).setOut(filter);
-        CommandShell.exec(command);
+        CommandShell.INSTANCE.exec(command);
         assertEquals(100, filter.getPctDone());
         assertEquals(5, callback.count);
         assertEquals(5, callback.patternsFound.size());

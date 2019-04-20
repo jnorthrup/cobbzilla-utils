@@ -21,7 +21,7 @@ import static org.junit.Assert.assertTrue;
 
 public class JsonUtilTest {
 
-    public static final String PREFIX = StringUtil.getPackagePath(JsonUtilTest.class);
+    public static final String PREFIX = StringUtil.INSTANCE.getPackagePath(JsonUtilTest.class);
     private static final String TEST_JSON = PREFIX +"/test.json";
 
     private static final Object[][] TESTS = new Object[][] {
@@ -48,10 +48,10 @@ public class JsonUtilTest {
     }
 
     public void assertReplacementMade(String testJson, String replacement, String path, ReplacementValue value) throws Exception {
-        final ObjectNode doc = JsonUtil.replaceNode(testJson, path, replacement);
-        final File temp = File.createTempFile("JsonUtilTest", ".json", getDefaultTempDir());
+        final ObjectNode doc = JsonUtil.INSTANCE.replaceNode(testJson, path, replacement);
+        final File temp = File.createTempFile("JsonUtilTest", ".json", INSTANCE.getDefaultTempDir());
         FileUtil.toFile(temp, toJson(doc));
-        final TestData data = JsonUtil.fromJson(temp, TestData.class);
+        final TestData data = JsonUtil.INSTANCE.fromJson(temp, TestData.class);
         assertEquals(replacement, value.getValue(data));
     }
 
@@ -60,18 +60,18 @@ public class JsonUtilTest {
     }
 
     @Test public void testMerge () throws Exception {
-        final String orig = StreamUtil.stream2string(PREFIX + "/merge/test1_orig.json");
-        final String request = StreamUtil.stream2string(PREFIX + "/merge/test1_request.json");
-        final String expected = StreamUtil.stream2string(PREFIX + "/merge/test1_expected.json");
-        assertTrue(jsonEquals(expected.replaceAll("\\p{javaSpaceChar}+", ""), JsonUtil.mergeJson(orig, request).replaceAll("\\p{javaSpaceChar}+", "")));
+        final String orig = StreamUtil.INSTANCE.stream2string(PREFIX + "/merge/test1_orig.json");
+        final String request = StreamUtil.INSTANCE.stream2string(PREFIX + "/merge/test1_request.json");
+        final String expected = StreamUtil.INSTANCE.stream2string(PREFIX + "/merge/test1_expected.json");
+        assertTrue(jsonEquals(expected.replaceAll("\\p{javaSpaceChar}+", ""), JsonUtil.INSTANCE.mergeJson(orig, request).replaceAll("\\p{javaSpaceChar}+", "")));
     }
 
     private boolean jsonEquals(String j1, String j2) {
         if (j1 == null) return j2 == null;
         if (j2 == null) return false;
 
-        final JsonNode n1 = json(j1, JsonNode.class);
-        final JsonNode n2 = json(j2, JsonNode.class);
+        final JsonNode n1 = INSTANCE.json(j1, JsonNode.class);
+        final JsonNode n2 = INSTANCE.json(j2, JsonNode.class);
         return jsonEquals(n1, n2);
     }
 
